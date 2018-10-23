@@ -1,0 +1,266 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 23-10-2018 a las 09:24:14
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.2.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `BD_SAPNI`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comision_evaluadora`
+--
+
+CREATE TABLE `comision_evaluadora` (
+  `id_comision` int(4) UNSIGNED NOT NULL,
+  `id_profesor` int(4) UNSIGNED NOT NULL,
+  `id_solicitud` int(4) UNSIGNED NOT NULL,
+  `otp` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estudiante_local`
+--
+
+CREATE TABLE `estudiante_local` (
+  `id_estudiante` int(4) UNSIGNED NOT NULL,
+  `id_matricula` int(4) UNSIGNED NOT NULL,
+  `ultima_participacion_evento` varchar(40) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estudiante_matricula`
+--
+
+CREATE TABLE `estudiante_matricula` (
+  `id_estudiante` int(4) UNSIGNED NOT NULL,
+  `cedula` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
+  `contrasenia` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `correo_institucional` varchar(40) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `id_rutp_fv_4_svu`
+--
+
+CREATE TABLE `id_rutp_fv_4_svu` (
+  `id_solicitud` int(4) UNSIGNED NOT NULL,
+  `hora_fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `login_administrativo`
+--
+
+CREATE TABLE `login_administrativo` (
+  `id_administrativo` int(4) UNSIGNED NOT NULL,
+  `correo_institucional` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `contrasenia` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `rol` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
+  `otp` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `profesor`
+--
+
+CREATE TABLE `profesor` (
+  `id_profesor` int(4) UNSIGNED NOT NULL,
+  `nombre` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `id_presidente` int(4) UNSIGNED NOT NULL,
+  `correo_institucional` varchar(40) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rutp_fv_4_ce`
+--
+
+CREATE TABLE `rutp_fv_4_ce` (
+  `relevancia` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `procede` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `observaciones` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `id_solicitud` int(4) UNSIGNED NOT NULL,
+  `hora_fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rut_fv_4_rec`
+--
+
+CREATE TABLE `rut_fv_4_rec` (
+  `apoyo_concedido` char(1) COLLATE utf8_spanish_ci NOT NULL,
+  `presupuesto` double NOT NULL,
+  `observaciones` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `id_solicitud` int(4) UNSIGNED NOT NULL,
+  `hora_fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `solicitud_rutp_fv_4_est`
+--
+
+CREATE TABLE `solicitud_rutp_fv_4_est` (
+  `id_solicitud` int(4) UNSIGNED NOT NULL,
+  `fecha_solicitud` date NOT NULL,
+  `id_estudiante` int(4) UNSIGNED NOT NULL,
+  `evento` varchar(75) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_evento` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
+  `alcance_evento` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `lugar` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `proyeccion_utp` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_inicio_evento` time NOT NULL,
+  `hora_fin_evento` time NOT NULL,
+  `id_apoyo_patrocinador` int(4) UNSIGNED NOT NULL,
+  `id_apoyo_solicitado` int(4) UNSIGNED NOT NULL,
+  `justificacion` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `anexo` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `visto_bueno` char(1) COLLATE utf8_spanish_ci NOT NULL,
+  `etapa` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `hora_fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `comision_evaluadora`
+--
+ALTER TABLE `comision_evaluadora`
+  ADD PRIMARY KEY (`id_comision`),
+  ADD KEY `id_profesor` (`id_profesor`),
+  ADD KEY `id_solicitud` (`id_solicitud`);
+
+--
+-- Indices de la tabla `estudiante_local`
+--
+ALTER TABLE `estudiante_local`
+  ADD PRIMARY KEY (`id_estudiante`);
+
+--
+-- Indices de la tabla `estudiante_matricula`
+--
+ALTER TABLE `estudiante_matricula`
+  ADD PRIMARY KEY (`cedula`),
+  ADD KEY `id_estudiante` (`id_estudiante`);
+
+--
+-- Indices de la tabla `id_rutp_fv_4_svu`
+--
+ALTER TABLE `id_rutp_fv_4_svu`
+  ADD KEY `id_solicitud` (`id_solicitud`);
+
+--
+-- Indices de la tabla `login_administrativo`
+--
+ALTER TABLE `login_administrativo`
+  ADD PRIMARY KEY (`correo_institucional`);
+
+--
+-- Indices de la tabla `profesor`
+--
+ALTER TABLE `profesor`
+  ADD PRIMARY KEY (`id_profesor`);
+
+--
+-- Indices de la tabla `rutp_fv_4_ce`
+--
+ALTER TABLE `rutp_fv_4_ce`
+  ADD KEY `id_solicitud` (`id_solicitud`);
+
+--
+-- Indices de la tabla `rut_fv_4_rec`
+--
+ALTER TABLE `rut_fv_4_rec`
+  ADD KEY `id_solicitud` (`id_solicitud`);
+
+--
+-- Indices de la tabla `solicitud_rutp_fv_4_est`
+--
+ALTER TABLE `solicitud_rutp_fv_4_est`
+  ADD PRIMARY KEY (`id_solicitud`),
+  ADD KEY `id_estudiante` (`id_estudiante`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `comision_evaluadora`
+--
+ALTER TABLE `comision_evaluadora`
+  ADD CONSTRAINT `comision_evaluadora_ibfk_1` FOREIGN KEY (`id_profesor`) REFERENCES `profesor` (`id_profesor`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comision_evaluadora_ibfk_2` FOREIGN KEY (`id_solicitud`) REFERENCES `solicitud_rutp_fv_4_est` (`id_solicitud`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `estudiante_matricula`
+--
+ALTER TABLE `estudiante_matricula`
+  ADD CONSTRAINT `estudiante_matricula_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante_local` (`id_estudiante`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `id_rutp_fv_4_svu`
+--
+ALTER TABLE `id_rutp_fv_4_svu`
+  ADD CONSTRAINT `id_rutp_fv_4_svu_ibfk_1` FOREIGN KEY (`id_solicitud`) REFERENCES `solicitud_rutp_fv_4_est` (`id_solicitud`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `rutp_fv_4_ce`
+--
+ALTER TABLE `rutp_fv_4_ce`
+  ADD CONSTRAINT `rutp_fv_4_ce_ibfk_1` FOREIGN KEY (`id_solicitud`) REFERENCES `solicitud_rutp_fv_4_est` (`id_solicitud`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `rut_fv_4_rec`
+--
+ALTER TABLE `rut_fv_4_rec`
+  ADD CONSTRAINT `rut_fv_4_rec_ibfk_1` FOREIGN KEY (`id_solicitud`) REFERENCES `solicitud_rutp_fv_4_est` (`id_solicitud`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `solicitud_rutp_fv_4_est`
+--
+ALTER TABLE `solicitud_rutp_fv_4_est`
+  ADD CONSTRAINT `solicitud_rutp_fv_4_est_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante_local` (`id_estudiante`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
