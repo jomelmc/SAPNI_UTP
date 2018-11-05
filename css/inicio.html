@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" rel="stylesheet">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+        <div class="container">
+                <div class="col-sm-12 divTitle">
+                <h1>FORMULARIO DE SOLICITUD DE APOYO ECONÓMICO</h1>  
+                </div>
+
+                <div class="row">
+                  <div class="col-sm grid-div">
+                    <!-- ejemplo input en formulario -->
+                   <p><span class="txtSubTitle">nombre</span>
+                    <input type="text" class="form-control txtInput" name=""  required/>
+                  </p>
+                  </div>
+                  <br>
+                  <div class="col-sm grid-div plusStudent">
+                    Agregar estudiantes
+                  </div>
+                </div>
+                <br>
+                <!-- Botones-->
+                <button type="button" class="btn btn-send">Ingresar</button>
+                <button type="button" class="btn btn-send">Enviar</button>
+                <button type="button" class="btn btn-send">Siguiente</button>
+
+                <button type="button" class="btn btn-send circule">Revisar</button>
+                <button type="button" class="btn btn-send circule">Atrás</button>
+                <button type="button" class="btn btn-send circule">Dar visto bueno</button>
+
+                <!--Select -->
+                <div class="form-group">
+                    <label for="exampleFormControlSelect">Example select</label>
+                    <select class="form-control txtInput select" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+
+                  <!-- text tarea -->
+                  <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Example textarea</label>
+                      <textarea class="form-control texTarea" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                     <!--check-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+
+                    <!--check-->
+                    <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios"  value="option1">
+                          <label class="form-check-label" for="exampleRadios1">
+                            Default radio
+                          </label>
+                     </div>
+                    <!-- Navegacion-->
+                     <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Bandeja</a>
+                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Seguimiento</a>
+                          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Dar visto bueno</a>
+                        </div>
+                      </nav>
+
+
+                     <!-- contenido -->
+                      <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade show active divNav" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                              <!-- busqueda --> 
+                             <input type="text" class="form-control search col-sm-11" value="Nuevas Solicitudes">
+
+                              <!-- lista de solicitudes -->
+                              <div class="list-group">
+                                  <div class="list-group-item">
+                                     <div class="row">
+                                        <div class="col-sm-10">BERTA MICHEL RIVERS</div>
+                                            <div class="col-sm-2 "> EN SOLICITUD </div>
+                                     </div>
+                                    <div>Olimpiadas interuniversitarias</div>
+                                  </div>
+                                </div>
+
+                          </div>
+                          <div class="tab-pane fade  divNav" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+                          <div class="tab-pane fade  divNav" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                      </div>
+
+                  <div class = " history select ">
+                    <span class="Text"> Ver Historial</span>
+                  </div>
+
+        </div>
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
