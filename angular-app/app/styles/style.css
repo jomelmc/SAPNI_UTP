@@ -22,11 +22,16 @@ body{
     color: #000000;
 }
 
+div.border {
+  border: 1px solid #dee2e6 !important;
+  padding: 50px;
+  margin: 50px;
+}
 
-.grid-div{ 
+.grid-div{
   background:#F6F6F6;
   border: 2px solid #681A5D;
- 
+
 }
 
 .divNav{
@@ -123,7 +128,7 @@ body{
   margin-bottom: 30px;
   border: 2px solid rgb(197, 135, 189);
   background: #F6F6F6 url("img/search.svg") no-repeat right 2rem center;
-  background-size: 20px 20px; 
+  background-size: 20px 20px;
 }
 
 .circule{

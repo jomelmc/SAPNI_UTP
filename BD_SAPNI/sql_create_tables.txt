@@ -1,0 +1,84 @@
+CREATE TABLE estudiante_matricula (
+    id_estudiante int(4) unsigned not null, FOREIGN KEY(id_estudiante) REFERENCES estudiante_local(id_estudiante) on DELETE CASCADE,
+    cedula varchar(12) not null, PRIMARY KEY(cedula),
+    contrasenia varchar not null,
+    nombre varchar(40) not null,
+    apellido varchar(40) not null,
+    correo_institucional varchar(40) not null
+);
+
+CREATE TABLE estudiante_local (
+    id_estudiante int(4) unsigned not null, PRIMARY KEY(id_estudiante),
+    id_matricula int(4) unsigned not null,
+    ultima_participacion_evento varchar not null
+);
+
+CREATE TABLE login_administrativo (
+    id_administrativo int(4) unsigned not null,
+    correo_institucional varchar(40) not null, PRIMARY KEY(correo_institucional),
+    contrasenia varchar not null,
+    nombre varchar(40) not null,
+    apellido varchar(40) not null,
+    rol varchar(12) not null,
+    otp varchar not null
+);
+
+CREATE TABLE solicitud_RUTP_FV_4_EST (
+	id_solicitud int(4) unsigned not null,
+    fecha_solicitud date not null,
+    id_estudiante int(4) unsigned not null, FOREIGN KEY(id_estudiante) REFERENCES estudiante_local(id_estudiante) on DELETE CASCADE,
+    evento varchar(75) not null,
+    tipo_evento varchar(12) not null,
+    alcance_evento varchar not null,
+    lugar varchar not null,
+    proyeccion_utp varchar not null,
+    hora_inicio_evento time not null,
+    hora_fin_evento time not null,
+    id_apoyo_patrocinador int(4) unsigned not null,
+    id_apoyo_solicitado int (4) unsigned not null,
+    justificacion varchar(300) not null,
+    anexo varchar not null,
+    visto_bueno char(1) not null,
+    etapa varchar,
+    hora_fecha datetime not null,
+    id_comision int(4) unsigned not null, FOREIGN KEY(id_comision) REFERENCES comision_evaluadora(id_comision) on DELETE CASCADE
+);
+
+CREATE TABLE RUT_FV_4_REC (
+    apoyo_concedido char(1) not null,
+    presupuesto double not null,
+    observaciones varchar(500),
+    id_solicitud int(4) unsigned not null, FOREIGN KEY(id_solicitud) REFERENCES solicitud_RUTP_FV_4_EST(id_solicitud) on DELETE CASCADE,
+    hora_fecha datetime not null
+);
+
+CREATE TABLE RUTP_FV_4_CE (
+    relevancia varchar not null,
+    procede varchar not null,
+    observaciones varchar(500),
+    id_solicitud int(4) unsigned not null, FOREIGN KEY(id_solicitud) REFERENCES solicitud_RUTP_FV_4_EST(id_solicitud) on DELETE CASCADE,
+    hora_fecha datetime not null
+);
+
+CREATE TABLE id_RUTP_FV_4_SVU (
+    id_solicitud int(4) unsigned not null, FOREIGN KEY(id_solicitud) REFERENCES solicitud_RUTP_FV_4_EST(id_solicitud) on DELETE CASCADE,
+    hora_fecha datetime not null
+);
+
+CREATE TABLE profesor (
+    id_profesor int(4) unsigned not null, PRIMARY KEY(id_profesor),
+    nombre varchar(40) not null,
+    apellido varchar(40) not null,
+    id_presidente int(4) unsigned not null,
+    correo_institucional varchar(40) not null
+);
+
+CREATE TABLE comision_evaluadora (
+    id_comision int(4) unsigned not null, PRIMARY KEY(id_comision),
+    id_profesor int(4) unsigned not null, FOREIGN KEY(id_profesor) REFERENCES profesor(id_profesor) on DELETE CASCADE,
+    id_solicitud int(4) unsigned not null, FOREIGN KEY(id_solicitud) REFERENCES solicitud_RUTP_FV_4_EST(id_solicitud) on DELETE CASCADE,
+    otp varchar not null
+);
+
+
+
