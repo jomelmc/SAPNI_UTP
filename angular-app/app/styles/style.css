@@ -14,6 +14,8 @@
 /*  botones de envio                                                            */
 /* .history: div historial.                                                     */
 /* .Text: margin al texto para separar del borde.                               */
+/* .login: inicio de sesion                                                     */
+/* .bordeRound: el que tiene lo rededondo de tu maldito borde                   */
 
 
 
@@ -22,16 +24,22 @@ body{
     color: #000000;
 }
 
-div.border {
-  border: 1px solid #dee2e6 !important;
-  padding: 50px;
-  margin: 50px;
+.login{
+  width: 60%;
+  text-align: center;
+  margin-left: 20%;
+     
 }
 
-.grid-div{
+.grid-div{ 
   background:#F6F6F6;
   border: 2px solid #681A5D;
+ 
+}
 
+.bordeRound{
+  border-radius: 1em;
+  width: 70%;
 }
 
 .divNav{
@@ -128,8 +136,9 @@ div.border {
   margin-bottom: 30px;
   border: 2px solid rgb(197, 135, 189);
   background: #F6F6F6 url("img/search.svg") no-repeat right 2rem center;
-  background-size: 20px 20px;
+  background-size: 20px 20px; 
 }
+
 
 .circule{
   border-radius: 3rem;
