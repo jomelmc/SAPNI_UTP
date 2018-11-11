@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2018 a las 08:11:02
--- Versión del servidor: 10.1.34-MariaDB
--- Versión de PHP: 7.2.8
+-- Tiempo de generación: 08-11-2018 a las 04:23:03
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -367,6 +365,70 @@ ALTER TABLE `tipo_evento`
   ADD PRIMARY KEY (`id`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `alcance_evento`
+--
+ALTER TABLE `alcance_evento`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `apoyo_ofrecido`
+--
+ALTER TABLE `apoyo_ofrecido`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `apoyo_posible`
+--
+ALTER TABLE `apoyo_posible`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `apoyo_solicitado`
+--
+ALTER TABLE `apoyo_solicitado`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `comision_evaluadora`
+--
+ALTER TABLE `comision_evaluadora`
+  MODIFY `id_comision` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `estudiante_local`
+--
+ALTER TABLE `estudiante_local`
+  MODIFY `id_estudiante` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `estudiante_matricula`
+--
+ALTER TABLE `estudiante_matricula`
+  MODIFY `id_estudiante` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `procede`
+--
+ALTER TABLE `procede`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `profesor`
+--
+ALTER TABLE `profesor`
+  MODIFY `id_profesor` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `proyeccion_utp`
+--
+ALTER TABLE `proyeccion_utp`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `relevancia`
+--
+ALTER TABLE `relevancia`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `solicitud_rutp_fv_4_est`
+--
+ALTER TABLE `solicitud_rutp_fv_4_est`
+  MODIFY `id_solicitud` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -421,7 +483,6 @@ ALTER TABLE `solicitud_rutp_fv_4_est`
   ADD CONSTRAINT `fk_id_proyeccion_utp` FOREIGN KEY (`id_proyeccion_utp`) REFERENCES `proyeccion_utp` (`id`),
   ADD CONSTRAINT `fk_id_tipo_evento` FOREIGN KEY (`id_tipo_evento`) REFERENCES `tipo_evento` (`id`),
   ADD CONSTRAINT `solicitud_rutp_fv_4_est_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante_local` (`id_estudiante`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
