@@ -2,41 +2,30 @@
 
   <div class="col-md-12">
 
-    <div class="border">
+    <div class="border-round grid-div">
 
       <div class="col-md-12 text-center">
 
-        <h1 class="text-uppercase text-center">Inicio de Sesión</h1>
+        <h1 class="text-uppercase text-center font-weight-bold">Inicio de Sesión</h1>
 
-        <form class="form-horizontal">
-          <fieldset>
+        <form>
 
-            <!-- Text input-->
-            <div class="form-group center-block">
-              <label class="col-md-4 control-label" for="textinput">Usuario</label>
-              <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
-              </div>
-            </div>
+          <div class="form-group pt-4">
+            <label class="txt-subtitle">Usuario</label>
+            <input type="email" class="form-control txt-input col-md-6 col-center" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+          </div>
 
-            <!-- Password input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="passwordinput">Contraseña</label>
-              <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+          <div class="form-group pt-4">
+            <label class="txt-subtitle">Contraseña</label>
+            <input type="password" class="form-control txt-input col-md-6 col-center">
+          </div>
 
-              </div>
-            </div>
+          <div class="pt-3">
+            <button type="submit" class="btn btn-primary btn-send">Ingresar</button>
+          </div>
 
-            <!-- Button -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="singlebutton"></label>
-              <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Login</button>
-              </div>
-            </div>
-
-          </fieldset>
+        </form>
 
       </div>
     </div>
