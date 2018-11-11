@@ -1,0 +1,155 @@
+/*                            Estilo css                                        */
+/*                   Proyecto Desarrollo de software 7 - SAPNI                  */
+/* GLOSARIO DE TÉRMINOS                                                         */
+/* .grid-div: div .col-	.col-sm-  .col-md-	.col-lg-  .col-xl-                  */
+/* .divTitle: para todos los titulos de encabezado que hay en las páginas       */
+/* .plusStudent: para agregar más estudiantes                                   */
+/* .btn-sendboton submit para el envio de datos                                 */
+/* .txtSubTitle: palabras que necesitan bold                                    */
+/* .txtInput: input tipo text la forma ovalada                                  */
+/* .select: se encarga de poner la imagen arrow-down en la etiqueta select      */
+/* .texTarea: cambiar tamaño al input.                                          */
+/* .search: input de busqueda                                                   */
+/* .circule: el btn-senboton, le hacemos un cambio de radius para los otros     */
+/*  botones de envio                                                            */
+/* .history: div historial.                                                     */
+/* .Text: margin al texto para separar del borde.                               */
+/* .login: inicio de sesion                                                     */
+/* .bordeRound: el que tiene lo rededondo de tu maldito borde                   */
+
+
+
+body{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: #000000;
+}
+
+.col-center{
+  float: none;
+  margin: 0 auto;
+}
+
+.grid-div{ 
+  background:#F6F6F6;
+  border: 2px solid #681A5D;
+}
+
+.border-round{
+  border-radius: 1em;
+  margin: 75px;
+  padding: 50px;
+}
+
+.div-nav{
+  background:#F6F6F6;
+  border: 1px solid #444444;
+}
+
+.div-title{
+  background: #972C88;
+  color: #FFFFFF;
+}
+
+.plus-student{
+    color: #972C88;
+}
+
+.txt-subtitle{
+   font-weight: bold;
+}
+
+.txt-input{
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: 2px solid #902982;
+  border-radius: 3rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
+
+.select{
+  background: #fff url("img/arrow_down.svg") no-repeat right 2rem center;
+  background-size: 20px 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.tex-tarea{
+  background: #FFFFFF;
+  border: 2px solid #902982;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
+
+
+.txt-input:focus, .tex-tarea:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #681A5D;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(67, 15, 60, 0.25);
+}
+
+.btn-send {
+  color: #fff;
+  background-color:  #CA44B8;
+  border-color:  #CA44B8;
+  font-weight: bold;
+}
+
+.btn-send:hover {
+  color: #fff;
+  background-color:  #902982;
+  border-color:#681A5D;
+}
+
+.btn-send:focus, .btn-send.focus {
+  box-shadow: 0 0 0 0.2rem rgba(104, 26, 93, 0.5);
+}
+
+.btn-send.disabled, .btn-send:disabled {
+  color: #fff;
+  background-color:    #CA44B8;
+  border-color:  #CA44B8;
+}
+
+.btn-send:not(:disabled):not(.disabled):active, .btn-send:not(:disabled):not(.disabled).active,
+.show > .btn-send.dropdown-toggle {
+  color: #fff;
+  background-color:  #681A5D;
+  border-color:#9E2F8F;
+}
+
+.btn-send:not(:disabled):not(.disabled):active:focus, .btn-send:not(:disabled):not(.disabled).active:focus,
+.show > .btn-send.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(104, 26, 93, 0.5);
+}
+
+
+.search{
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  border: 2px solid rgb(197, 135, 189);
+  background: #F6F6F6 url("img/search.svg") no-repeat right 2rem center;
+  background-size: 20px 20px; 
+}
+
+
+.circule{
+  border-radius: 3rem;
+}
+
+.history{
+   border: 2px solid #681A5D;
+   margin: 20px;
+}
+
+.Text{
+  margin: 5px;
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
