@@ -17,21 +17,31 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('login', {
+        url: '/login',
         templateUrl: 'views/login.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
-      .when('/solicitud-apoyo-economico', {
+      .state('solicitud_apoyo_economico', {
+        url: '/solicitud_apoyo_economico',
         templateUrl: 'views/formSolicitudApoyoEconomico.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
+      .state('default', {
+        url: '/',
+        templateUrl: 'views/login.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
+      })
+      
   });
