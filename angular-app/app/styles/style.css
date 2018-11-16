@@ -16,6 +16,7 @@
 /* .Text: margin al texto para separar del borde.                               */
 /* .border-round: el que tiene lo rededondo de tu maldito borde                 */
 /* .logo-login: logo del login principal de la pagina                           */
+/* .logo_2: contiene el logo que va en el encabezado                            */
 
 
 
@@ -183,4 +184,10 @@
   width: 35%;
   background: #FFFFFF;
   border-radius: 7em;
+}
+
+/*IMAGEN LOGO ENCABEZADO*/
+.logo_2{
+  width: 60px;
+  margin-top: -10px;
 }
