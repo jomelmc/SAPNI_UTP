@@ -5,7 +5,7 @@
 /* .divTitle: para todos los titulos de encabezado que hay en las páginas       */
 /* .plusStudent: para agregar más estudiantes                                   */
 /* .btn-sendboton submit para el envio de datos                                 */
-/* .txtSubTitle: palabras que necesitan bold                                    */
+/* .txt-subtitle: palabras que necesitan bold                                   */
 /* .txtInput: input tipo text la forma ovalada                                  */
 /* .select: se encarga de poner la imagen arrow-down en la etiqueta select      */
 /* .texTarea: cambiar tamaño al input.                                          */
@@ -17,6 +17,8 @@
 /* .border-round: el que tiene lo rededondo de tu maldito borde                 */
 /* .logo-login: logo del login principal de la pagina                           */
 /* .logo_2: contiene el logo que va en el encabezado                            */
+/* .div-nav: contenedor del contenido de navegación de bandeja                  */
+/* .solc: estados de las solicitudes: solicitado, en evaluacion ect.            */
 
 
 
@@ -155,11 +157,8 @@
 
 .search{
   margin-top: 30px;
-  margin-left: 30px;
   margin-bottom: 30px;
   border: 1px solid rgb(197, 135, 189);
-  background: #F6F6F6 url("img/search.svg") no-repeat right 2rem center;
-  background-size: 20px 20px; 
 }
 
 
@@ -190,4 +189,28 @@
 .logo_2{
   width: 60px;
   margin-top: -10px;
+}
+
+.divNav{
+  background: #F6F6F6;
+  border: 1px solid #444444;
+}
+
+.fa-search{
+  float: right;
+  margin-top: -55px;
+  margin-right: 30px;
+  opacity: 0.5;
+}
+
+.solc{
+  float: right;
+  margin-top: -10px;
+}
+
+.btn-mt{
+  width: 20%;
+  margin-left: 75%;
+  margin-top: -8%;
+  
 }

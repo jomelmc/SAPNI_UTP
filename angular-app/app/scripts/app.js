@@ -22,13 +22,28 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/login.html',
-        controller: 'MainCtrl',
+        templateUrl:  'views/login.html',
+        controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .when('/solicitud-apoyo-economico', {
-        templateUrl: 'views/formSolicitudApoyoEconomico.html',
-        controller: 'MainCtrl',
+        templateUrl:  'views/formSolicitudApoyoEconomico.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/bandeja-trabajo',{
+        templateUrl:  'views/bandejaTrabajo.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/seguimiento',{
+        templateUrl:  'views/seguimiento.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/dar-visto-bueno',{
+        templateUrl:  'views/darVistoBueno.html',
+        controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .otherwise({
