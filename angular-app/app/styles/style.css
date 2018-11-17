@@ -5,7 +5,7 @@
 /* .divTitle: para todos los titulos de encabezado que hay en las páginas       */
 /* .plusStudent: para agregar más estudiantes                                   */
 /* .btn-sendboton submit para el envio de datos                                 */
-/* .txtSubTitle: palabras que necesitan bold                                    */
+/* .txt-subtitle: palabras que necesitan bold                                   */
 /* .txtInput: input tipo text la forma ovalada                                  */
 /* .select: se encarga de poner la imagen arrow-down en la etiqueta select      */
 /* .texTarea: cambiar tamaño al input.                                          */
@@ -14,14 +14,29 @@
 /*  botones de envio                                                            */
 /* .history: div historial.                                                     */
 /* .Text: margin al texto para separar del borde.                               */
-/* .login: inicio de sesion                                                     */
-/* .bordeRound: el que tiene lo rededondo de tu maldito borde                   */
+/* .border-round: el que tiene lo rededondo de tu maldito borde                 */
+/* .logo-login: logo del login principal de la pagina                           */
+/* .logo_2: contiene el logo que va en el encabezado                            */
+/* .div-nav: contenedor del contenido de navegación de bandeja                  */
+/* .solc: estados de las solicitudes: solicitado, en evaluacion ect.            */
+/* .fondo: cambio del color grind-div                                           */
 
 
 
-body{
+.body-principal-sapni{
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.link-text{
+  color: #972C88;
+  text-decoration: underline #972C88;
+}
+
+.font-normal{
+  font-weight: normal;
 }
 
 .col-center{
@@ -29,15 +44,21 @@ body{
   margin: 0 auto;
 }
 
+.col-full{
+  margin: 800px;
+}
+
 .grid-div{ 
-  background:#F6F6F6;
-  border: 2px solid #681A5D;
+  background:#F8F4F7;
+  border: 1px solid #681A5D;
 }
 
 .border-round{
-  border-radius: 1em;
-  margin: 75px;
-  padding: 50px;
+  background:#F9F9F9;
+  border-radius: 3em;
+  margin: 20px;
+  margin-left: 25%;
+  padding: 60px;
 }
 
 .div-nav{
@@ -48,10 +69,8 @@ body{
 .div-title{
   background: #972C88;
   color: #FFFFFF;
-}
-
-.plus-student{
-    color: #972C88;
+  font-size: 2.3rem;
+  padding: 3px 3px 3px 20px;
 }
 
 .txt-subtitle{
@@ -62,9 +81,18 @@ body{
   display: block;
   width: 100%;
   height: 40px;
-  border: 2px solid #902982;
+  border: 1px solid #902982;
   border-radius: 3rem;
   padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
+
+.txt-input-small{
+  display: block;
+  width: 100%;
+  height: 25px;
+  border: 1px solid #902982;
+  border-radius: 3rem;
   font-size: 1rem;
 }
 
@@ -77,7 +105,7 @@ body{
 
 .tex-tarea{
   background: #FFFFFF;
-  border: 2px solid #902982;
+  border: 1px solid #902982;
   border-radius: 0.25rem;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -130,11 +158,8 @@ body{
 
 .search{
   margin-top: 30px;
-  margin-left: 30px;
   margin-bottom: 30px;
-  border: 2px solid rgb(197, 135, 189);
-  background: #F6F6F6 url("img/search.svg") no-repeat right 2rem center;
-  background-size: 20px 20px; 
+  border: 1px solid rgb(197, 135, 189);
 }
 
 
@@ -143,7 +168,7 @@ body{
 }
 
 .history{
-   border: 2px solid #681A5D;
+   border: 1px solid #681A5D;
    margin: 20px;
 }
 
@@ -152,4 +177,77 @@ body{
   margin-left: 20px;
   font-weight: bold;
   font-size: 20px;
+}
+
+/*IMAGEN LOGO LOGIN*/
+.logo-login{
+  width: 35%;
+  background: #FFFFFF;
+  border-radius: 7em;
+}
+
+/*IMAGEN LOGO ENCABEZADO*/
+.logo_2{
+  width: 60px;
+  margin-top: -10px;
+}
+
+.divNav{
+  background: #F6F6F6;
+  border: 1px solid #444444;
+}
+
+.fa-search{
+  float: right;
+  margin-top: -55px;
+  margin-right: 30px;
+  opacity: 0.5;
+}
+
+.solc{
+  float: right;
+  margin-top: -10px;
+}
+
+.btn-mt{
+  width: 20%;
+  margin-left: 75%;
+  margin-top: -8%;
+  
+}
+
+.fondo{
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+.div-1{
+  width: 40%;
+}
+.div-2{
+width: 20%;
+ margin-top: -90px;
+}
+
+.mright{
+ width: 300px;
+ margin-left: 70%;
+}
+
+.lis-solc{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  border: 1px solid #902982;;
+}
+
+.list-solc-item{
+  position: relative;
+  display: block;
+  padding: 0;
+  margin-top: 5px;
+  border-radius: 0px;
+  border: 0px;
 }
