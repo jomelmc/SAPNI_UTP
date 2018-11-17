@@ -46,6 +46,17 @@ angular
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/solicitud-visto-bueno',{
+        templateUrl:  'views/solicitudVistoBueno.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/asignacion-comision-evaluadora',{
+        templateUrl:  'views/asignacionComision.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      
       .otherwise({
         redirectTo: '/'
       });

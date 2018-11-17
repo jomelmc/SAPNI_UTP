@@ -19,6 +19,7 @@
 /* .logo_2: contiene el logo que va en el encabezado                            */
 /* .div-nav: contenedor del contenido de navegación de bandeja                  */
 /* .solc: estados de las solicitudes: solicitado, en evaluacion ect.            */
+/* .fondo: cambio del color grind-div                                           */
 
 
 
@@ -213,4 +214,40 @@
   margin-left: 75%;
   margin-top: -8%;
   
+}
+
+.fondo{
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+.div-1{
+  width: 40%;
+}
+.div-2{
+width: 20%;
+ margin-top: -90px;
+}
+
+.mright{
+ width: 300px;
+ margin-left: 70%;
+}
+
+.lis-solc{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  border: 1px solid #902982;;
+}
+
+.list-solc-item{
+  position: relative;
+  display: block;
+  padding: 0;
+  margin-top: 5px;
+  border-radius: 0px;
+  border: 0px;
 }

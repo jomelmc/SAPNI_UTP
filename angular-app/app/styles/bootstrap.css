@@ -5077,12 +5077,13 @@ input[type="button"].btn-block {
   flex: 1;
 }
 
-.list-group {
+.list-solc {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
   padding-left: 0;
+  
 }
 
 .list-group-item-action {
@@ -5109,7 +5110,7 @@ input[type="button"].btn-block {
   background-color: #fff;
   margin: 10px;
   border-radius: 20px;
-  border: 2px solid #681A5D;
+  border: 1px solid #681A5D;
 }
 
 .list-group-item:first-child {
