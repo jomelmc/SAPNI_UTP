@@ -103,7 +103,7 @@
   -moz-appearance: none;
 }
 
-.tex-tarea{
+.txt-area{
   background: #FFFFFF;
   border: 1px solid #902982;
   border-radius: 0.25rem;
@@ -118,6 +118,14 @@
   border-color: #681A5D;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(67, 15, 60, 0.25);
+}
+
+.btn-next {
+  color: #fff;
+  background-color:  #CA44B8;
+  border-color:  #CA44B8;
+  font-weight: bold;
+  margin-bottom: 10px; 
 }
 
 .btn-send {

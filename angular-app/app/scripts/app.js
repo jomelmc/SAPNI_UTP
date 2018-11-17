@@ -17,47 +17,31 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl:  'views/login.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/solicitud-apoyo-economico', {
-        templateUrl:  'views/formSolicitudApoyoEconomico.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('solicitud_apoyo_economico', {
+        url: '/solicitud_apoyo_economico',
+        templateUrl: 'views/formSolicitudApoyoEconomico.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/bandeja-trabajo',{
-        templateUrl:  'views/bandejaTrabajo.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/seguimiento',{
-        templateUrl:  'views/seguimiento.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/dar-visto-bueno',{
-        templateUrl:  'views/darVistoBueno.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/solicitud-visto-bueno',{
-        templateUrl:  'views/solicitudVistoBueno.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/asignacion-comision-evaluadora',{
-        templateUrl:  'views/asignacionComision.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('default', {
+        url: '/',
+        templateUrl: 'views/login.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
       
-      .otherwise({
-        redirectTo: '/'
-      });
   });
