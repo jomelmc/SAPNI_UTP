@@ -5077,7 +5077,7 @@ input[type="button"].btn-block {
   flex: 1;
 }
 
-.list-solc {
+.list-group {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;

@@ -14,12 +14,21 @@
 /*  botones de envio                                                            */
 /* .history: div historial.                                                     */
 /* .Text: margin al texto para separar del borde.                               */
-/* .border-round: el que tiene lo rededondo de tu maldito borde                 */
+/* .border-round: el que tiene lo rededondoen el borde                          */
 /* .logo-login: logo del login principal de la pagina                           */
 /* .logo_2: contiene el logo que va en el encabezado                            */
 /* .div-nav: contenedor del contenido de navegación de bandeja                  */
 /* .solc: estados de las solicitudes: solicitado, en evaluacion ect.            */
 /* .fondo: cambio del color grind-div                                           */
+/* .h:secciones del historial                                                   */
+/* .history-drown:muestra las secciones del historial                           */
+/* .mright: configura el margin-right de un div                                 */
+/* .lis-solc: rescribe el list-group                                            */
+/* .lis-solc-item: rescribe los item del list-group                             */
+/* .box-lista: edita el tamaño de la lista                                      */
+/* .input-number; edita el type number para cambiar sus bordes y color          */
+
+
 
 
 
@@ -168,8 +177,23 @@
 }
 
 .history{
+  width: 80%;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-left: 60px; 
    border: 1px solid #681A5D;
-   margin: 20px;
+}
+
+.history-drown{
+  width: 100%;
+  border-top: 1px solid #681A5D
+}
+
+.h{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 3em;
+  border: 1px solid #495057;
 }
 
 .Text{
@@ -230,7 +254,7 @@ width: 20%;
 }
 
 .mright{
- width: 300px;
+ width: 400px;
  margin-left: 70%;
 }
 
@@ -240,7 +264,8 @@ width: 20%;
   -ms-flex-direction: column;
   flex-direction: column;
   padding-left: 0;
-  border: 1px solid #902982;;
+  border: 1px solid #902982;
+  margin-top: -90px;
 }
 
 .list-solc-item{
@@ -250,4 +275,14 @@ width: 20%;
   margin-top: 5px;
   border-radius: 0px;
   border: 0px;
+}
+
+
+.box-lista{
+  width: 60%;
+}
+
+.input-number{
+ background-color: #FFFFFF;
+ border: 1px solid #681A5D;
 }

@@ -46,8 +46,8 @@ angular
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/solicitud-visto-bueno',{
-        templateUrl:  'views/solicitudVistoBueno.html',
+      .when('/revision-solicitud-visto-bueno',{
+        templateUrl:  'views/revisionSolicitudVistobueno.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
@@ -56,6 +56,37 @@ angular
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/solicitud-visto-bueno',{
+        templateUrl:  'views/solicitudVistoBueno.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/asignacion-de-resultado-lista',{
+        templateUrl:  'views/asignacionResultadoLista.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/asignar-resultado',{
+        templateUrl:  'views/asignarResultado.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/solicitudes-asignadas',{
+        templateUrl:  'views/solicitudesAsignadas.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/historial-solicitud',{
+        templateUrl:  'views/historialSolicitud.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/generar-solicitud',{
+        templateUrl:  'views/recomendacion.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
+      
       
       .otherwise({
         redirectTo: '/'
