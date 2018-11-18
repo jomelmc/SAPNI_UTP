@@ -91,23 +91,49 @@
               </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
               <label class="control-label txt-subtitle">Fecha de participación en el evento</label>
 
-              <div class="col-sm-5">
-                <label class="control-label">Inicio</label>
-                <input class="form-control txt-input-small mr-5" type="date" name="fechaEvento">
-              </div>
+              <label class="control-label">Inicio</label>
+              <input class="form-control txt-input-small mr-5" type="date" name="fechaEvento">
 
-              <div class="col-sm-5">
-                <label class="control-label">Fin</label>
-                <input class="form-control txt-input-small mr-5" type="date" name="fechEvento">
+              <label class="control-label">Fin</label>
+              <input class="form-control txt-input-small mr-5" type="date" name="fechEvento">
+            </div>
+
+            <div class="ml-auto col-sm-4">
+              <label class="control-label txt-subtitle">Apoyo ofrecido</label>
+              <div class="checkbox">
+                <input class="ml-4" type="checkbox" name="apoyoOfrecido">
+                <label class="control-label">Inscripción</label>
               </div>
             </div>
           </div>
 
+          <div class="form-group row ml-2 mt-2">
+
+            <div class="col-sm-4">
+              <label class="control-label txt-subtitle">Apoyo solicitado a la UTP</label>
+              <div class="checkbox">
+                <input type="checkbox" name="apoyoSolicitado">
+                <label class="control-label">Inscripción</label>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <label class="control-label txt-subtitle">Justificación y beneficio de la participación</label>
+              <textarea class="form-control txt-area" id="justificacion" rows="3"></textarea>
+            </div>
+
+          </div>
+
+          <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary btn-next">Siguiente</button>
+          </div>
         </div>
+
     </div>
+
     </form>
 
   </div>

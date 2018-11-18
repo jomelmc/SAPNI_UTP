@@ -17,44 +17,55 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl:  'views/login.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/solicitud-apoyo-economico', {
-        templateUrl:  'views/formSolicitudApoyoEconomico.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('solicitud_apoyo_economico', {
+        url: '/solicitud_apoyo_economico',
+        templateUrl: 'views/formSolicitudApoyoEconomico.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/bandeja-trabajo',{
-        templateUrl:  'views/bandejaTrabajo.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('bandeja_trabajo', {
+        url: '/bandeja_trabajo',
+        templateUrl: 'views/bandejaTrabajo.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/seguimiento',{
-        templateUrl:  'views/seguimiento.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('seguimiento', {
+        url: '/seguimiento',
+        templateUrl: 'views/seguimiento.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/dar-visto-bueno',{
-        templateUrl:  'views/darVistoBueno.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('dar_visto_bueno', {
+        url: '/dar_visto_bueno',
+        templateUrl: 'views/darVistoBueno.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/revision-solicitud-visto-bueno',{
-        templateUrl:  'views/revisionSolicitudVistobueno.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('revision_solicitud_visto_bueno', {
+        url: '/revision_solicitud_visto_bueno',
+        templateUrl: 'views/revisionSolicitudVistoBueno.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
-      .when('/asignacion-comision-evaluadora',{
-        templateUrl:  'views/asignacionComision.html',
-        controller:   'MainCtrl',
-        controllerAs: 'main'
+      .state('default', {
+        url: '/',
+        templateUrl: 'views/login.html',
+        controller: 'MainCtrl',
+        controllerAs: 'ctrl'
       })
       .when('/solicitud-visto-bueno',{
         templateUrl:  'views/solicitudVistoBueno.html',
@@ -93,7 +104,17 @@ angular
       })
       
       
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  })
+  
+  .directive('commonsItems', [function() {
+    return {
+      restrict: 'E',
+      templateUrl:'views/directives/templates/commons-items.html',
+      scope:{
+        data: '=',
+        state: '='
+      },
+      link: function(){
+      }
+    };
+  }]);
