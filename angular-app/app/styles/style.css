@@ -27,8 +27,7 @@
 /* .lis-solc-item: rescribe los item del list-group                             */
 /* .box-lista: edita el tamaño de la lista                                      */
 /* .input-number; edita el type number para cambiar sus bordes y color          */
-
-
+/* .fecha: campo donde se colocara la fecha del sistema                         */
 
 
 
@@ -78,7 +77,7 @@
 .div-title{
   background: #972C88;
   color: #FFFFFF;
-  font-size: 2.3rem;
+  font-size: 1.3rem;
   padding: 3px 3px 3px 20px;
 }
 
@@ -287,4 +286,13 @@ width: 20%;
 .input-number{
  background-color: #FFFFFF;
  border: 1px solid #681A5D;
+}
+
+.fecha{
+  width: 80px;
+  background: transparent;
+  border: transparent;
+  color: #FFFFFF;
+  font-size: 14px;
+
 }
