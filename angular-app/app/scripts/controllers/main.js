@@ -38,15 +38,12 @@ angular.module('angularAppApp')
         vm.data = response.data;
         console.log(vm.data);
 
-        var userRole = vm.data.rol;
-        if (userRole == "Estudiante") {
+        vm.data.rol;
+        if (angular.isUndefined(vm.data.body.rol)) {
           $state.go("solicitud_apoyo_economico");
         }
 
       }, function (response) {
-
-        // $scope.data = response.data || 'Request failed';
-        // $scope.status = response.status;
 
       });
 
@@ -54,16 +51,6 @@ angular.module('angularAppApp')
 
     vm.setup = function () {
 
-      // vm.user = {
-      //   entityId: '3425',
-      //   entityType: 'ESTUDIANTE',
-      // };
-
-      // vm.data = {
-      //   completeName: 'Michelle Sosa Rodriguez',
-      //   stateRequest: 'EN SOLICITUD',
-      //   event: 'Olimpiadas interuniversitarias'
-      // }
     };
 
     vm.setup();
