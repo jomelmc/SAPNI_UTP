@@ -86,6 +86,11 @@ angular
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/prueba-notificaciones',{
+        templateUrl:  'views/notificacion5.html',
+        controller:   'MainCtrl',
+        controllerAs: 'main'
+      })
       
       
       .otherwise({
