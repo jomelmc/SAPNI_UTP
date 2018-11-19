@@ -4,7 +4,7 @@
   <div class="div-title form-inline col-sm-12 mb-2">
     <h1 class="text-uppercase"><img class="logo_2" src="../images/logo_utp.png"> formulario de solicitud de apoyo
       económico</h1>
-    <input class="fecha ml-3" type="text" value="11/18/2018" disabled>
+    <input class="fecha ml-3" type="text" ng-model="ctrl.date" disabled>
     <button class="btn btn-primary btn-send ml-4" href="#">Cerrar sesión</button>
   </div>
 
@@ -16,21 +16,21 @@
 
           <div class="form-group row ml-2 mt-3">
             <label class="control-label txt-subtitle">Nombre</label>
-            <input class="ml-2 col-sm-4 form-control txt-input-small" type="text" name="name">
+            <input class="ml-2 col-sm-4 form-control txt-input-small" type="text">
 
             <label class="ml-5 control-label txt-subtitle">Cédula</label>
-            <input class="ml-2 col-sm-2 form-control txt-input-small mr-5" type="text" name="name">
+            <input class="ml-2 col-sm-2 form-control txt-input-small mr-5" type="text">
 
             <label class="ml-5 control-label txt-subtitle">Unidad académica</label>
             <select class="ml-2 col-sm-2 txt-input-small">
-              <option>1</option>
+              <option></option>
             </select>
           </div>
 
           <div class="form-group row ml-2 mt-2">
             <label class="control-label txt-subtitle">Última vez que participó en un evento</label>
-            <select class="ml-2 col-sm-9 txt-input-small">
-              <option>1</option>
+            <select class="ml-2 col-sm-9 txt-input-small" ng-model="ctrl.estudiante.ultima_participacion">
+              <option ng-value="lateEvent.name" ng-repeat="lateEvent in ctrl.catalogs.lateParticipateEvent track by $index">{{lateEvent.name}}</option>
             </select>
 
           </div>
@@ -45,9 +45,7 @@
 
           <div class="form-group row ml-2 mt-3">
             <label class="control-label txt-subtitle">Evento en el que desea participar</label>
-            <select class="ml-2 col-sm-9 txt-input-small">
-              <option>1</option>
-            </select>
+            <input type="text" class="ml-2 col-sm-9 txt-input-small" ng-model="ctrl.estudiante.evento">
 
           </div>
 
@@ -55,29 +53,21 @@
 
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Tipo de evento</label>
-              <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Cultural</label>
-              </div>
-              <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Deportivo</label>
+              <div class="radio" ng-repeat="event in ctrl.catalogs.tipoEvento track by $index">
+                <input type="radio" ng-value="event.id" ng-model="ctrl.estudiante.id_tipo_evento"><label class="ml-2">{{event.nombre}}</label>
               </div>
             </div>
 
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Alcande del evento</label>
-              <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Nacional</label>
-              </div>
-              <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Internacional</label>
+              <div class="radio" ng-repeat="alcance in ctrl.catalogs.alcanceEvento track by $index">
+                <input type="radio" ng-value="alcance.id" ng-model="ctrl.estudiante.id_alcance_evento"><label class="ml-2">{{alcance.nombre}}</label>
               </div>
             </div>
 
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Lugar</label>
-              <select class="col-sm-9 txt-input-small">
-                <option>1</option>
-              </select>
+              <input type="text" class="col-sm-9 txt-input-small" ng-model="ctrl.estudiante.lugar">
             </div>
 
           </div>
@@ -86,8 +76,8 @@
 
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Proyección de la institución a través del evento</label>
-              <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Excelente</label>
+              <div class="radio" ng-repeat="proyeccion in ctrl.catalogs.proyeccionUtp track by $index">
+                <input type="radio" ng-value="proyeccion.id" ng-model="ctrl.estudiante.id_proyeccion_utp"><label class="ml-2">{{proyeccion.nombre}}</label>
               </div>
             </div>
 
@@ -95,17 +85,21 @@
               <label class="control-label txt-subtitle">Fecha de participación en el evento</label>
 
               <label class="control-label">Inicio</label>
-              <input class="form-control txt-input-small mr-5" type="date" name="fechaEvento">
+              <input class="form-control txt-input-small mr-5" 
+                     type="date"
+                     ng-model="ctrl.inicio_evento">
 
               <label class="control-label">Fin</label>
-              <input class="form-control txt-input-small mr-5" type="date" name="fechEvento">
+              <input class="form-control txt-input-small mr-5" 
+                     type="date" 
+                     ng-model="ctrl.fin_evento">
             </div>
 
             <div class="ml-auto col-sm-4">
               <label class="control-label txt-subtitle">Apoyo ofrecido</label>
-              <div class="checkbox">
-                <input class="ml-4" type="checkbox" name="apoyoOfrecido">
-                <label class="control-label">Inscripción</label>
+              <div class="radio" ng-repeat="apoyoOfrecido in ctrl.catalogs.apoyoPatrocinador track by $index">
+                <input class="ml-4" type="radio"  ng-value="apoyoOfrecido.id" ng-model="ctrl.estudiante.id_apoyo_ofrecido">
+                <label class="control-label">{{apoyoOfrecido.nombre}}</label>
               </div>
             </div>
           </div>
@@ -113,22 +107,22 @@
           <div class="form-group row ml-2 mt-2">
 
             <div class="col-sm-4">
-              <label class="control-label txt-subtitle">Apoyo solicitado a la UTP</label>
-              <div class="checkbox">
-                <input type="checkbox" name="apoyoSolicitado">
-                <label class="control-label">Inscripción</label>
+              <label class="control-label txt-subtitle">Apoyo solicitado a UTP</label>
+              <div class="radio" ng-repeat="apoyoSolicitado  in ctrl.catalogs.apoyoSolicitado track by $index">
+                <input type="radio" ng-value="apoyoSolicitado.id" ng-model="ctrl.estudiante.id_apoyo_solicitado">
+                <label class="control-label">{{apoyoSolicitado.nombre}}</label>
               </div>
             </div>
 
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Justificación y beneficio de la participación</label>
-              <textarea class="form-control txt-area" id="justificacion" rows="3"></textarea>
+              <textarea class="form-control txt-area" id="justificacion" rows="3" ng-model="ctrl.estudiante.justificacion"></textarea>
             </div>
 
           </div>
 
           <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary btn-next">Siguiente</button>
+            <button class="btn btn-primary btn-next" ng-click="ctrl.saveStudent()">Siguiente</button>
           </div>
         </div>
 

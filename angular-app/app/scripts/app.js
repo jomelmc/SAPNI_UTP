@@ -67,37 +67,37 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'ctrl'
       })
-      .when('/solicitud-visto-bueno',{
+      .state('/solicitud_visto_bueno',{
         templateUrl:  'views/solicitudVistoBueno.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/asignacion-de-resultado-lista',{
+      .state('/asignacion_de_resultado_lista',{
         templateUrl:  'views/asignacionResultadoLista.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/asignar-resultado',{
+      .state('/asignar_resultado',{
         templateUrl:  'views/asignarResultado.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/solicitudes-asignadas',{
+      .state('/solicitudes_asignadas',{
         templateUrl:  'views/solicitudesAsignadas.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/historial-solicitud',{
+      .state('/historial_solicitud',{
         templateUrl:  'views/historialSolicitud.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/generar-solicitud',{
+      .state('/generar_solicitud',{
         templateUrl:  'views/recomendacion.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/prueba-notificaciones',{
+      .state('/prueba_notificaciones',{
         templateUrl:  'views/notificacion5.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
@@ -109,7 +109,7 @@ angular
   .directive('commonsItems', [function() {
     return {
       restrict: 'E',
-      templateUrl:'views/directives/templates/commons-items.html',
+      templateUrl:'views/directives/templates/commons_items.html',
       scope:{
         data: '=',
         state: '='
