@@ -19,21 +19,48 @@ angular.module('angularAppApp')
     var actualDate = new Date();
     var date = actualDate.getFullYear() + "-" + (actualDate.getMonth() + 1) + "-" + actualDate.getDate();
     vm.date = moment(date).format('DD/MM/YYYY');
-    vm.estudiante = {};
+    vm.estudiante = {
+      cedulas: [{
+        cedula: "",
+        ultima_participacion: ""
+      }]
+    };
 
     /** FUNCIONES */
 
+    vm.addStudent = function (student) {
+
+      vm.estudiante.cedulas.push({
+        cedula: "",
+        ultima_participacion: ""
+      });
+
+      if (angular.isDefined(vm.estudiante.cedulas[student])) {
+        vm.estudiante.cedulas[student].estudiante.cedula = null;
+        vm.estudiante.cedulas[student].estudiante.ultima_participacion = null;
+      }
+
+      console.log(vm.estudiante);
+    };
+
+    vm.eraseStudent = function (student) {
+
+      var i = vm.estudiante.cedulas.indexOf(student);
+
+      if (i != 0) {
+        vm.estudiante.cedulas.splice(i, 1);
+      }
+
+      console.log(vm.estudiante);
+    };
+
     vm.saveStudent = function () {
 
-      vm.estudiante.cedulas = [
-        {cedula: '8-888-8888', ultima_participacion: vm.estudiante.ultima_participacion}
-      ];
-
       vm.estudiante.fechaSol = date;
-      vm.estudiante.hora_fecha = date + " 12:35:29.123";
+      vm.estudiante.hora_fecha = date + " 00:00:00.000";
 
-      vm.estudiante.inicio_evento = moment(vm.inicio_evento).format('YYYY/MM/DD') + " 12:35:29.123";
-      vm.estudiante.fin_evento = moment(vm.fin_evento).format('YYYY/MM/DD') + " 12:35:29.123";
+      vm.estudiante.inicio_evento = moment(vm.inicio_evento).format('YYYY/MM/DD') + " 00:00:00.000";
+      vm.estudiante.fin_evento = moment(vm.fin_evento).format('YYYY/MM/DD') + " 00:00:00.000";
 
       vm.inicio_evento = new Date(vm.inicio_evento);
       vm.fin_evento = new Date(vm.fin_evento);
@@ -42,20 +69,24 @@ angular.module('angularAppApp')
       vm.estudiante.fin_evento = vm.estudiante.fin_evento.split("/").join("-");
 
       vm.estudiante.anexo = "-";
+      var estudiante = angular.toJson(vm.estudiante);
+
       console.log(vm.estudiante);
 
       var wrapper = {
+
         url: 'https://sapniphp.scalingo.io/auth/solestform',
         method: 'POST',
-        data: vm.estudiante
+        data: estudiante
+
       };
 
       $http(wrapper).
 
       then(function (response) {
-        console.log(response.data);
+        console.log(response.data.status);
       }, function (response) {
-        console.log(response.data);
+        console.log(response.status);
       });
     };
 
@@ -77,8 +108,6 @@ angular.module('angularAppApp')
 
         vm.catalogs.lateParticipateEvent = vm.lateParticipateEvent;
         vm.catalogs.status = response.data.status;
-
-        console.log(vm.catalogs);
 
       }, function (response) {
 
