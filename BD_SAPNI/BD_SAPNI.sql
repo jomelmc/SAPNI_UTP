@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2018 a las 04:23:03
+-- Tiempo de generación: 14-11-2018 a las 02:07:19
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -397,11 +397,6 @@ ALTER TABLE `comision_evaluadora`
 -- AUTO_INCREMENT de la tabla `estudiante_local`
 --
 ALTER TABLE `estudiante_local`
-  MODIFY `id_estudiante` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `estudiante_matricula`
---
-ALTER TABLE `estudiante_matricula`
   MODIFY `id_estudiante` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `procede`
