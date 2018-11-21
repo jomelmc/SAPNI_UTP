@@ -2932,7 +2932,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-lg, .btn-group-lg > .btn {
-  padding: 0.5rem 1rem;
+  width: 35%;
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: 0.3rem;
@@ -4869,10 +4869,8 @@ input[type="button"].btn-block {
 
 .alert {
   position: relative;
-  padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
 }
 
 .alert-heading {
@@ -5083,6 +5081,7 @@ input[type="button"].btn-block {
   -ms-flex-direction: column;
   flex-direction: column;
   padding-left: 0;
+  
 }
 
 .list-group-item-action {
@@ -5109,7 +5108,7 @@ input[type="button"].btn-block {
   background-color: #fff;
   margin: 10px;
   border-radius: 20px;
-  border: 2px solid #681A5D;
+  border: 1px solid #681A5D;
 }
 
 .list-group-item:first-child {

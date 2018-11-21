@@ -33,6 +33,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "angular-route": "^1.7.5"
+    "angular-route": "^1.7.5",
+    "wiredep": "^4.0.0"
   }
 }
