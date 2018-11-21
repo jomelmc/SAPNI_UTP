@@ -1,28 +1,30 @@
 <div class="body-principal-sapni">
 
   <!-- Título Principal de la Página-->
-
-  <h1 class="div-title text-uppercase"><img class="logo_2" src="../images/logo3.png"> formulario de solicitud de apoyo
-    económico</h1>
-
+  <div class="div-title form-inline col-sm-12 mb-2">
+    <h1 class="text-uppercase"><img class="logo_2" src="../images/logo_utp.png"> formulario de solicitud de apoyo
+      económico</h1>
+    <input class="fecha ml-3" type="text" value="11/18/2018" disabled>
+    <button class="btn btn-primary btn-send ml-4" href="#">Cerrar sesión</button>
+  </div>
+  <!--NOTIFICACION CUANDO NO EXISTE EL ESTUDIANTE EN LA BASE DE DATOS-->
+  <div class="alert alert-danger" role="alert">
+    <i class="fa fa-user ml-5 "></i> El estudiante ingresado no se encuentra en el sistema.
+  </div>
 
   <!-- grid-div agregarEstudiante -->
   <div class="container-body">
     <div class="col-md-12">
       <form action="" class="form-horizontal">
-        <div class="grid-div">
 
+        <div class="grid-div">
           <div class="form-group row ml-2 mt-3">
+            <!-- NOMBRE PONER DESDE LA BASE DE DATOS -->
             <label class="control-label txt-subtitle">Nombre</label>
-            <input class="ml-2 col-sm-4 form-control txt-input-small" type="text" name="name">
+            <input class="ml-4 mr-5 col-sm-4 form-control txt-input-small" type="text" name="name" ng-requiered="true">
 
             <label class="ml-5 control-label txt-subtitle">Cédula</label>
-            <input class="ml-2 col-sm-2 form-control txt-input-small mr-5" type="text" name="name">
-
-            <label class="ml-5 control-label txt-subtitle">Unidad académica</label>
-            <select class="ml-2 col-sm-2 txt-input-small">
-              <option>1</option>
-            </select>
+            <input class="ml-2 col-sm-3 form-control txt-input-small mr-5" type="text" name="name" ng-requiered="true">
           </div>
 
           <div class="form-group row ml-2 mt-2">
@@ -54,20 +56,20 @@
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Tipo de evento</label>
               <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Cultural</label>
+                <input type="radio" name="tipoEvento" ng-requiered="true"><label class="ml-2">Cultural</label>
               </div>
               <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Deportivo</label>
+                <input type="radio" name="tipoEvento" ng-requiered="true"><label class="ml-2">Deportivo</label>
               </div>
             </div>
 
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Alcande del evento</label>
               <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Nacional</label>
+                <input type="radio" name="tipoEvento" ng-requiered="true"><label class="ml-2">Nacional</label>
               </div>
               <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Internacional</label>
+                <input type="radio" name="tipoEvento" ng-requiered="true"><label class="ml-2">Internacional</label>
               </div>
             </div>
 
@@ -85,7 +87,7 @@
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Proyección de la institución a través del evento</label>
               <div class="radio">
-                <input type="radio" name="tipoEvento"><label class="ml-2">Excelente</label>
+                <input type="radio" name="tipoEvento" ng-requiered="true"><label class="ml-2">Excelente</label>
               </div>
             </div>
 
@@ -93,16 +95,16 @@
               <label class="control-label txt-subtitle">Fecha de participación en el evento</label>
 
               <label class="control-label">Inicio</label>
-              <input class="form-control txt-input-small mr-5" type="date" name="fechaEvento">
+              <input class="form-control txt-input-small mr-5" type="date" name="fechaEvento" ng-requiered="true">
 
               <label class="control-label">Fin</label>
-              <input class="form-control txt-input-small mr-5" type="date" name="fechEvento">
+              <input class="form-control txt-input-small mr-5" type="date" name="fechEvento" ng-requiered="true">
             </div>
 
             <div class="ml-auto col-sm-4">
               <label class="control-label txt-subtitle">Apoyo ofrecido</label>
               <div class="checkbox">
-                <input class="ml-4" type="checkbox" name="apoyoOfrecido">
+                <input class="ml-4" type="checkbox" name="apoyoOfrecido" ng-requiered="true">
                 <label class="control-label">Inscripción</label>
               </div>
             </div>
@@ -113,14 +115,14 @@
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Apoyo solicitado a la UTP</label>
               <div class="checkbox">
-                <input type="checkbox" name="apoyoSolicitado">
+                <input type="checkbox" name="apoyoSolicitado" ng-requiered="true">
                 <label class="control-label">Inscripción</label>
               </div>
             </div>
 
             <div class="col-sm-4">
               <label class="control-label txt-subtitle">Justificación y beneficio de la participación</label>
-              <textarea class="form-control txt-area" id="justificacion" rows="3"></textarea>
+              <textarea class="form-control txt-area" id="justificacion" rows="3" ng-requiered="true"></textarea>
             </div>
 
           </div>
