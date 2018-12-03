@@ -11,9 +11,7 @@
 angular
   .module('angularAppApp', [
     'ngAnimate',
-    'ngAria',
     'ngCookies',
-    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
@@ -68,36 +66,43 @@ angular
         controllerAs: 'ctrl'
       })
       .state('/solicitud_visto_bueno',{
+        url: '/solicitud_visto_bueno',
         templateUrl:  'views/solicitudVistoBueno.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .state('/asignacion_de_resultado_lista',{
+        url: '/solicitud_visto_bueno',
         templateUrl:  'views/asignacionResultadoLista.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .state('/asignar_resultado',{
+        url: '/asignar_resultado',
         templateUrl:  'views/asignarResultado.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .state('/solicitudes_asignadas',{
+        url: '/solicitudes_asignadas',
         templateUrl:  'views/solicitudesAsignadas.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .state('/historial_solicitud',{
+        url: '/historial_solicitud',
         templateUrl:  'views/historialSolicitud.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .state('/generar_solicitud',{
+        url: '/generar_solicitud',
         templateUrl:  'views/recomendacion.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
       })
       .state('/prueba_notificaciones',{
+        url: '/prueba_notificaciones',
         templateUrl:  'views/notificacion5.html',
         controller:   'MainCtrl',
         controllerAs: 'main'
@@ -109,7 +114,7 @@ angular
   .directive('commonsItems', [function() {
     return {
       restrict: 'E',
-      templateUrl:'views/directives/templates/commons_items.html',
+      templateUrl:'views/directives/templates/commons-items.html',
       scope:{
         data: '=',
         state: '='
