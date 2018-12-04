@@ -7,10 +7,7 @@
     <input class="fecha ml-3" type="text" ng-model="ctrl.date" disabled>
     <button class="btn btn-primary btn-send ml-4" href="#">Cerrar sesión</button>
   </div>
-  <!--NOTIFICACION CUANDO NO EXISTE EL ESTUDIANTE EN LA BASE DE DATOS-->
-  <div class="alert alert-danger" role="alert">
-    <i class="fa fa-user ml-5 "></i> El estudiante ingresado no se encuentra en el sistema.
-  </div>
+
   <!-- grid-div agregarEstudiante -->
   <div class="container-body">
     <div class="col-md-12">
@@ -40,8 +37,12 @@
           <div class="alert alert-danger" role="alert" ng-if="solicitudApoyoEconomico.identification.$invalid && solicitudApoyoEconomico.cedula.$touched">
             <i class="fa fa-times"></i>Cédula errónea o no existente. Por favor, inténtelo otra vez.
           </div>
-
+          <!--NOTIFICACION CUANDO NO EXISTE EL ESTUDIANTE EN LA BASE DE DATOS-->
+          <div class="alert alert-danger" role="alert" ng-submit>
+            <i class="fa fa-user ml-5 "></i> El estudiante ingresado no se encuentra en el sistema.
+          </div>
         </div>
+
         <!-- Termina grid-div agregarEstudiante -->
 
         <span class="mt-3 link-text"><i class="fa fa-plus-circle mr-1"></i><a class="font-normal" ng-click="ctrl.addStudent($index)">Agregar
