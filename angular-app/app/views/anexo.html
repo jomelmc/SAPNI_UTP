@@ -1,0 +1,30 @@
+<!--SUBIR ANEXOS DEL FORMULARIO SOLICITUD-->
+<div class="body-principal-sapni">
+  <!-- Título Principal de la Página-->
+  <div class="div-title form-inline col-sm-12 mb-2">
+    <h1 class="text-uppercase"><img class="logo_2" src="../images/logo_utp.png"> formulario de solicitud de apoyo
+      económico</h1>
+    <input class="fecha ml-3" type="text" ng-model="ctrl.date" disabled>
+    <button class="btn btn-primary btn-send ml-4" href="#">Cerrar sesión</button>
+  </div>
+
+  <div class="container-body">
+    <div class="col-md-12">
+      <div class="text-center">
+        <form>
+          <div class="col-sm-12 mt-5 mb-4">
+            <h3 class="txt-subtitle text-uppercase">Envió de Anexos de Solicitud de Apoyo Económico</h3>
+          </div>
+          <div class="grid-div t-40 col-center">
+            <label for="archivo" class="upload-button"></label>
+            <input class="inputfile" id="archivo" name="archivo" type="file" ng-required="true">
+
+          </div>
+          <div class="col-sm-10 mt-4">
+            <button type="submit" class="btn btn-send text-uppercase col-sm-2  ml-2 float-right mr-5">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

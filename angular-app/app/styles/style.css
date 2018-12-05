@@ -318,3 +318,16 @@ width: 20%;
 .pie{
   font-style: oblique;
 }
+.inputfile {
+ display: none;
+}
+
+.upload-button{
+  width: 100%;
+  height: 100%;
+  padding-bottom: 30%;
+}
+
+.t-40{
+  width: 57%;
+}
