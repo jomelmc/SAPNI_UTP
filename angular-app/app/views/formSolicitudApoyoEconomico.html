@@ -32,14 +32,10 @@
             </select>
 
           </div>
-
-          <!-- alerta de error datos no encontrados-->
-          <div class="alert alert-danger" role="alert" ng-if="solicitudApoyoEconomico.identification.$invalid && solicitudApoyoEconomico.cedula.$touched">
-            <i class="fa fa-times"></i>Cédula errónea o no existente. Por favor, inténtelo otra vez.
-          </div>
+          
           <!--NOTIFICACION CUANDO NO EXISTE EL ESTUDIANTE EN LA BASE DE DATOS-->
-          <div class="alert alert-danger" role="alert" ng-submit>
-            <i class="fa fa-user ml-5 "></i> El estudiante ingresado no se encuentra en el sistema.
+          <div class="alert alert-danger" role="alert" ng-if="solicitudApoyoEconomico.identification.$invalid && solicitudApoyoEconomico.cedula.$touched">
+            <i class="fa fa-user ml-5 "></i>Cédula errónea o no existente. Por favor, inténtelo otra vez.
           </div>
         </div>
 

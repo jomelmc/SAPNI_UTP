@@ -28,6 +28,98 @@ angular.module('angularAppApp')
 
     /** FUNCIONES */
 
+    /**
+     * ************************************ LOGIN DEL SISTEMA ********************************************************
+     */
+
+    vm.loginOnSubmit = function() {
+
+      vm.status = null;
+      var wrapper = {
+        url: 'https://sapniphp.scalingo.io/auth/validateuser',
+        method: vm.method,
+        data: {
+          user: vm.id,
+          pass: vm.password
+        }
+      };
+
+      $http(wrapper).
+
+      then(function(response) {
+
+        vm.dataUser = response.data.body;
+        vm.status = response.data.status;
+
+        if(angular.isUndefined(vm.dataUser.rol)){
+
+          vm.setCatalogs();
+          $state.go("solicitud_apoyo_economico");
+
+        } else{
+
+          vm.getDataRequest();
+          
+        }
+
+        // switch (vm.dataUser.rol) {
+
+        //   case undefined:
+
+        //     vm.setCatalogs();
+        //     $state.go("solicitud_apoyo_economico");
+        //     break;
+
+        //   case "Profesor":
+
+        //     $state.go("solicitudes_asignadas");
+        //     break;
+
+        //   case "Rector":
+
+        //     $state.go("solicitud_visto_bueno");
+        //     break;
+
+        //   case "Secretaria":
+
+        //     $state.go("bandeja_trabajo");
+        //     break;
+
+        //   default:
+        //     $state.go("login");
+        // }
+
+      }, function(response) {
+        vm.status = response.data.status;
+      });
+
+    };
+
+    vm.getDataRequest = function() {
+
+      // var wrapper = {
+      //   url: 'https://sapniphp.scalingo.io/auth/svform',
+      //   method: vm.method,
+      //   data: {
+      //     otp: "",
+      //     correo: ""
+      //   }
+      // };
+
+      // $http(wrapper).
+
+      // then(function(response) {
+
+      // }, function(response) {
+
+      // });
+      
+    };
+
+    /**
+     * ************************************* FUNCIONES PARA ROL DE ESTUDIANTE *****************************************
+     */
+
     vm.addStudent = function(student) {
 
       vm.estudiante.cedulas.push({
@@ -36,22 +128,22 @@ angular.module('angularAppApp')
       });
 
       if (angular.isDefined(vm.estudiante.cedulas[student])) {
+
         vm.estudiante.cedulas[student].estudiante.cedula = null;
         vm.estudiante.cedulas[student].estudiante.ultima_participacion = null;
+
       }
 
-      console.log(vm.estudiante);
     };
 
     vm.eraseStudent = function(student) {
 
-      var i = vm.estudiante.cedulas.indexOf(student);
+      var index = vm.estudiante.cedulas.indexOf(student);
 
-      if (i != 0) {
-        vm.estudiante.cedulas.splice(i, 1);
+      if (index != 0) {
+        vm.estudiante.cedulas.splice(index, 1);
       }
 
-      console.log(vm.estudiante);
     };
 
     vm.saveStudent = function() {
@@ -70,18 +162,12 @@ angular.module('angularAppApp')
       vm.estudiante.fin_evento = vm.estudiante.fin_evento.split("/").join("-");
 
       vm.estudiante.anexo = "-";
-      var estudiante = angular.toJson(vm.estudiante);
-
-      console.log(vm.estudiante);
 
       var wrapper = {
 
         url: 'https://sapniphp.scalingo.io/auth/solestform',
         method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        data: estudiante
+        data: vm.estudiante
 
       };
 
@@ -117,48 +203,8 @@ angular.module('angularAppApp')
 
       });
 
-
     };
 
-    vm.loginOnSubmit = function() {
-
-      var wrapper = {
-        url: 'https://sapniphp.scalingo.io/auth/validateuser',
-        method: vm.method,
-        data: {
-          user: vm.user.id,
-          pass: vm.user.password
-        }
-      };
-
-      $http(wrapper).
-
-      then(function(response) {
-
-        vm.userInformation = {};
-
-        vm.data = response.data.body;
-        var status =  response.data.status;
-
-        console.log(vm.data);
-
-        if(status.code == 'U0002'){
-          
-          vm.showError = true;
-          return;
-
-        } else if(angular.isUndefined(vm.data.rol) && status.code != 'U0002'){
-
-          vm.showError = false;
-          $state.go("solicitud_apoyo_economico");
-          return;
-        }
-
-      }, function(response) {
-
-      });
-
-    };
 
     vm.validateIdentification = function(userId, form) {
 
@@ -177,9 +223,9 @@ angular.module('angularAppApp')
 
         exist = response.data.status;
 
-        if(exist.code != "U0000"){
+        if (exist.code != "U0000") {
           form.$setValidity('validIdentification', false);
-        } else{
+        } else {
           form.$setValidity('validIdentification', true);
         }
 
@@ -188,6 +234,12 @@ angular.module('angularAppApp')
       });
 
     };
+
+    /**
+     * ************************************* FUNCIONES PARA ROL DE PROFESOR ***************************************
+     */
+
+
 
     vm.setup = function() {
 
@@ -235,7 +287,6 @@ angular.module('angularAppApp')
         }
       ];
 
-      vm.setCatalogs();
     };
 
     vm.setup();

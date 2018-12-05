@@ -3,7 +3,7 @@
   <div class="col-md-12">
 
     <div class="text-center">
-      <form name="login">
+      <form name="login" ng-submit="ctrl.loginOnSubmit()">
         <div class="col-md-6 text-center border-round">
           <div class="form-group pt-3">
             <img src="../images/logo_utp.png"
@@ -17,7 +17,7 @@
           <div class="form-group pt-3">
             <input type="text"
               name="identification"
-              ng-model="ctrl.user.id"
+              ng-model="ctrl.id"
               ng-required="true"
               class="form-control txt-input col-md-6 col-center"
               placeholder="usuario">
@@ -25,21 +25,24 @@
 
           <div class="form-group pt-2">
             <input type="password"
-              ng-model="ctrl.user.password"
+              ng-model="ctrl.password"
               ng-required="true"
               class="form-control txt-input col-md-6 col-center"
               placeholder="contraseña">
           </div>
           <!-- alerta de error datos no encontrados-->
           <div class="alert alert-danger"
-            role="alert" ng-if="login.identification.$invalid && login.identification.$touched">
+            role="alert"
+            ng-if="ctrl.status.code == 'U0002'">
             <i class="fa fa-times mr-2"></i>Datos erróneos. Por favor, inténtelo otra vez.
           </div>
 
           <div class="pt-3">
             <button type="submit"
-              ng-click="ctrl.loginOnSubmit()"
-              class="btn btn-primary btn-send">Ingresar</button>
+              class="
+              btn
+              btn-primary
+              btn-send">Ingresar</button>
           </div>
         </div>
       </form>

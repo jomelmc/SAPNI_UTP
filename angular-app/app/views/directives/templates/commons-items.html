@@ -1,12 +1,7 @@
-<div>
-  <div class="list-group-item" ng-class="state == 'dar_visto_bueno' ? 'list-group-item col-sm-8 mt-4' : 'list-group-item'">
-    <div class="txt-subtitle text-uppercase">{{data.completeName}}</div>
-    <div class="solc">{{data.stateRequest}}</div>
-    <div>{{data.event}}</div>
-
+<div class="list-group-item">
+  <div class="txt-subtitle text-uppercase">{{data.participant.name}}</div>
+  <div class="solc text-uppercase">
+    {{data.participant.state}}
   </div>
-  <div ng-if="state == 'dar_visto_bueno'">
-    <button type="button" class="btn btn-send btn-mt circule">Revisar</button>
-  </div>
+  <div>{{data.participant.event}}</div>
 </div>
-
