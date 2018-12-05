@@ -58,36 +58,9 @@ angular.module('angularAppApp')
 
         } else if (vm.status.code == 'U0000') {
 
-          vm.getDataRequest();
+          $state.go(vm.dataUser.estate);
 
         }
-
-        // switch (vm.dataUser.rol) {
-
-        //   case undefined:
-
-        //     vm.setCatalogs();
-        //     $state.go("solicitud_apoyo_economico");
-        //     break;
-
-        //   case "Profesor":
-
-        //     $state.go("solicitudes_asignadas");
-        //     break;
-
-        //   case "Rector":
-
-        //     $state.go("solicitud_visto_bueno");
-        //     break;
-
-        //   case "Secretaria":
-
-        //     $state.go("bandeja_trabajo");
-        //     break;
-
-        //   default:
-        //     $state.go("login");
-        // }
 
       }, function (response) {
         vm.status = response.data.status;
@@ -110,14 +83,13 @@ angular.module('angularAppApp')
 
       then(function (response) {
 
-        vm.dataUser.solicitudes = response.data.body.solicitudes;
-        $state.go(vm.dataUser.estado);
+        vm.solicitud = response.data.body.solicitudes;
 
       }, function (response) {
 
       });
 
-
+      return vm.dataUser.solicitudes;
     };
 
     /**
@@ -247,6 +219,16 @@ angular.module('angularAppApp')
 
     /**
      * ************************************* FUNCIONES PARA ROL DE PROFESOR ***************************************
+     */
+
+    vm.openRequest = function (request) {
+
+      vm.dataRequest = request;
+      $state.go("historial_solicitud");
+    }
+
+    /**
+     * SETUP INITIAL STATE
      */
 
     vm.setup = function () {
@@ -383,6 +365,10 @@ angular.module('angularAppApp')
         }
       ];
 
+      if (angular.isDefined(vm.dataUser)) {
+        vm.getDataRequest();
+      }
+
       if ($state.current.name == "solicitud_apoyo_economico") {
         vm.setCatalogs();
       }
@@ -390,5 +376,6 @@ angular.module('angularAppApp')
     };
 
     vm.setup();
-    console.log(vm.solicitudes);
+    console.log(vm.dataUser);
+
   });

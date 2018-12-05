@@ -21,10 +21,20 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active divNav" id="solc-asignadas" role="tabpanel" aria-labelledby="nav-solc-asignadas">
           <div class="col-sm-12">
-            
-            <!-- TEMPLATE DE LA DIRECTIVA DE SOLICITUDES -->
-            <commons-items data="ctrl.solicitudes"></commons-items>
-            
+
+            <div class="list-group m-2" ng-repeat="solicitud in ctrl.dataUser.solicitudes">
+              <div class="list-group-item" ng-click="ctrl.openRequest(solicitud)">
+                <div class="ml-1 row">
+                  <div class="txt-subtitle text-uppercase" ng-repeat="estudiante in solicitud.estudiantes">{{estudiante.nombre}}<span
+                      ng-if="!$last">,&nbsp;</span></div>
+                </div>
+                <div class="solc text-uppercase">
+                  {{solicitud.etapa}}
+                </div>
+                <div>{{solicitud.evento}}</div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
