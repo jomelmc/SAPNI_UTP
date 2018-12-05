@@ -59,7 +59,7 @@ angular.module('angularAppApp')
         if (angular.isUndefined(vm.dataUser.rol) && vm.status.code == 'U0000') {
 
           vm.setCatalogs();
-          $state.go(vm.dataUser.estado);
+          $state.go(vm.dataUser.estate);
 
         } else if (vm.status.code == 'U0000') {
 
@@ -97,6 +97,13 @@ angular.module('angularAppApp')
       }, function(response) {
 
       });
+
+    };
+
+    vm.closeSessionStorage = function() {
+
+      sessionStorage.clear();
+      localStorage.clear();
 
     };
 
@@ -229,11 +236,11 @@ angular.module('angularAppApp')
      * ************************************* FUNCIONES PARA ROLES ADMINISTRATIVOS ***************************************
      */
 
-    vm.goToApproveRequest = function(){
+    vm.goToApproveRequest = function() {
       $state.go("notificacion_2");
     };
 
-    vm.goToVerifyRequest = function(){
+    vm.goToVerifyRequest = function() {
       $state.go("revision_solicitud_visto_bueno");
     };
 
@@ -270,6 +277,31 @@ angular.module('angularAppApp')
       vm.dataRequest = JSON.parse(localStorage.getItem("dataRequest"));
     };
 
+    vm.listTeachers = function() {
+
+      var dataUser = JSON.parse(sessionStorage.getItem("dataUser"));
+      var wrapper = {
+        url: url + 'rectorform',
+        method: method,
+        data: {
+          otp: dataUser.otp,
+          correo: dataUser.identification,
+        }
+      };
+
+      $http(wrapper).
+
+      then(function(response) {
+
+        localStorage.setItem("listTeachers", angular.toJson(response.data.body.profesores));
+        vm.allTeachers = JSON.parse(localStorage.getItem("listTeachers"));
+
+      }, function(response) {
+
+      });
+
+    };
+
     vm.openRequest = function(request) {
 
       vm.dataRequest = request;
@@ -277,9 +309,19 @@ angular.module('angularAppApp')
 
       localStorage.setItem("dataRequest", angular.toJson(vm.dataRequest));
 
-
       if (data.rol == "Secretaria") {
+
         $state.go("revision_solicitud_visto_bueno");
+
+      } else if (data.rol == "Rector") {
+
+        $state.go("asignacion_comision_evaluadora");
+        vm.listTeachers();
+
+      } else {
+
+        $state.go("solicitudes_asignadas");
+
       }
 
       vm.getInfoRequest();
@@ -336,8 +378,12 @@ angular.module('angularAppApp')
         }
       ];
 
-      vm.getDataRequest();
-      vm.getInfoRequest();
+      if ($state.current.name != "login") {
+        vm.getDataRequest();
+        vm.getInfoRequest();
+        vm.listTeachers();
+      }
+
 
       if ($state.current.name == "solicitud_apoyo_economico") {
         vm.setCatalogs();

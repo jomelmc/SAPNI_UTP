@@ -71,8 +71,8 @@ angular
         controller:   'MainCtrl',
         controllerAs: 'ctrl'
       })
-      .state('asignacion_de_resultado_lista',{
-        url: '/solicitud_visto_bueno',
+      .state('asignacion_resultado_lista',{
+        url: '/asignacion_resultado_lista',
         templateUrl:  'views/asignacionResultadoLista.html',
         controller:   'MainCtrl',
         controllerAs: 'ctrl'
@@ -110,6 +110,12 @@ angular
       .state('notificacion_2',{
         url: '/notificacion_2',
         templateUrl:  'views/notificacion2.html',
+        controller:   'MainCtrl',
+        controllerAs: 'ctrl'
+      })
+      .state('asignacion_comision_evaluadora',{
+        url: '/asignacion_comision_evaluadora',
+        templateUrl:  'views/asignacionComision.html',
         controller:   'MainCtrl',
         controllerAs: 'ctrl'
       })

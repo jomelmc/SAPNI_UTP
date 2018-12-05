@@ -23,14 +23,14 @@
           <a class="nav-item nav-link"
             id="nav-visto-bueno"
             data-toggle="tab"
-            href="/#!/solicitud-visto-bueno"
+            href="/#!/solicitud_visto_bueno"
             role="tab"
             aria-controls="nav-visto-bueno"
             aria-selected="false">Solicitudes con visto</a>
           <a class="nav-item nav-link active"
             id="nav-asignar-result"
             data-toggle="tab"
-            href="/#!/asignacion-de-resultado-lista"
+            href="/#!/asignacion_resultado_lista"
             role="tab"
             aria-controls="nav-asignar-result"
             aria-selected="true">Asignar resultado</a>
@@ -45,15 +45,27 @@
           role="tabpanel"
           aria-labelledby="nav-visto-bueno">
           <div class="col-sm-12">
-            <div class="list-group m-2">
+
+            <div class="list-group m-2"
+              ng-repeat="solicitud in ctrl.solicitud">
               <div class="list-group-item">
-                <div class="txt-subtitle text-uppercase">Michelle Sosa Rodriguez </div>
-                <div class="solc text-uppercase">
-                  en ponderación
+                <div class="ml-1 row">
+                  <div class="txt-subtitle text-uppercase"
+                    ng-repeat="estudiante in solicitud.estudiantes">{{estudiante.nombre}}<span
+                      ng-if="!$last">,&nbsp;</span></div>
                 </div>
-                <div>Olimpiadas interuniversitarias</div>
+                <div class="solc text-uppercase">
+                  <span class="mt-3 link-text"><i class="fa fa-plus-circle mr-1"></i><a class="font-normal">Agregar
+                      estudiante</a></span>
+                  {{solicitud.etapa}}
+                </div>
+                <div>{{solicitud.evento}}</div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>

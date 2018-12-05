@@ -34,7 +34,7 @@
           </div>
           
           <!--NOTIFICACION CUANDO NO EXISTE EL ESTUDIANTE EN LA BASE DE DATOS-->
-          <div class="alert alert-danger" role="alert" ng-if="solicitudApoyoEconomico.identification.$invalid && solicitudApoyoEconomico.cedula.$touched">
+          <div class="alert alert-danger" role="alert" ng-if="solicitudApoyoEconomico.identification.$touched && solicitudApoyoEconomico.identification.$invalid">
             <i class="fa fa-user ml-5 "></i>Cédula errónea o no existente. Por favor, inténtelo otra vez.
           </div>
         </div>
