@@ -12,13 +12,13 @@
               class="logo-login">
           </div>
           <div class="txt-subtitle font-normal">
-            El cambio de estado de la solicitud, a sido cambiado.
+            El cambio de estado de la solicitud, ha sido cambiado.
           </div>
           <div class="mt-2">
             <button type="submit"
-              class="btn btn-send text-uppercase col-sm-3 mr-5">Regresar</button>
+              class="btn btn-send text-uppercase col-sm-3 mr-5" ng-click="ctrl.goToVerifyRequest()">Regresar</button>
             <button type="submit"
-              class="btn btn-send text-uppercase col-sm-3 ml-5">Acepto</button>
+              class="btn btn-send text-uppercase col-sm-3 ml-5" ng-click="ctrl.approveRequest()">Acepto</button>
           </div>
         </div>
       </form>

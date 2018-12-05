@@ -51,9 +51,22 @@
           aria-labelledby="nav-seguimiento">
           <div class="list-group m-2">
 
-            <!-- DIRECTIVA AQUÍ-->
-            <commons-items data="ctrl.data"
-              state="ctrl.state"></commons-items>
+            <!-- SOLICITUDES EN ITEMS -->
+            <div class="list-group m-2"
+              ng-repeat="solicitud in ctrl.solicitud">
+              <div class="list-group-item"
+                ng-click="ctrl.openRequest(solicitud)">
+                <div class="ml-1 row">
+                  <div class="txt-subtitle text-uppercase"
+                    ng-repeat="estudiante in solicitud.estudiantes">{{estudiante.nombre}}<span
+                      ng-if="!$last">,&nbsp;</span></div>
+                </div>
+                <div class="solc text-uppercase">
+                  {{solicitud.etapa}}
+                </div>
+                <div>{{solicitud.evento}}</div>
+              </div>
+            </div>
 
           </div>
         </div>

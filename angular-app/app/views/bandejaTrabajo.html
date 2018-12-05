@@ -28,6 +28,7 @@
             <!-- busqueda -->
             <input type="text" class="form-control search" value="Buscar"><i class="fa fa-search"></i>
 
+            <!-- SOLICITUDES EN ITEMS -->
             <div class="list-group m-2" ng-repeat="solicitud in ctrl.solicitud">
               <div class="list-group-item" ng-click="ctrl.openRequest(solicitud)">
                 <div class="ml-1 row">
@@ -40,6 +41,7 @@
                 <div>{{solicitud.evento}}</div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

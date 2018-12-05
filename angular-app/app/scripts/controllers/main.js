@@ -8,16 +8,18 @@
  * Controller of the angularAppApp
  */
 angular.module('angularAppApp')
-  .controller('MainCtrl', function ($state, $http) {
+  .controller('MainCtrl', function($state, $http) {
 
     /** SE DECLARA EL ÁMBITO GLOBAL */
     var vm = this;
 
     /** INICIALIZAR VALORES */
-    vm.state = $state.current.name;
-    vm.method = 'POST';
+    var method = 'POST';
+    var url = 'https://sapniphp.scalingo.io/auth/';
+
     var actualDate = new Date();
     var date = actualDate.getFullYear() + "-" + (actualDate.getMonth() + 1) + "-" + actualDate.getDate();
+
     vm.date = moment(date).format('DD/MM/YYYY');
     vm.estudiante = {
       cedulas: [{
@@ -32,12 +34,12 @@ angular.module('angularAppApp')
      * ************************************ LOGIN DEL SISTEMA ********************************************************
      */
 
-    vm.loginOnSubmit = function () {
+    vm.loginOnSubmit = function() {
 
       vm.status = null;
       var wrapper = {
-        url: 'https://sapniphp.scalingo.io/auth/validateuser',
-        method: vm.method,
+        url: url + 'validateuser',
+        method: method,
         data: {
           user: vm.id,
           pass: vm.password
@@ -46,9 +48,12 @@ angular.module('angularAppApp')
 
       $http(wrapper).
 
-      then(function (response) {
+      then(function(response) {
 
         vm.dataUser = response.data.body;
+        vm.dataUser.identification = vm.id;
+
+        sessionStorage.setItem("dataUser", angular.toJson(vm.dataUser));
         vm.status = response.data.status;
 
         if (angular.isUndefined(vm.dataUser.rol) && vm.status.code == 'U0000') {
@@ -59,44 +64,47 @@ angular.module('angularAppApp')
         } else if (vm.status.code == 'U0000') {
 
           $state.go(vm.dataUser.estate);
+          vm.getDataRequest();
 
         }
 
-      }, function (response) {
+      }, function(response) {
         vm.status = response.data.status;
       });
 
     };
 
-    vm.getDataRequest = function () {
+    vm.getDataRequest = function() {
+
+      vm.solicitud = {};
+      vm.dataUser = JSON.parse(sessionStorage.getItem("dataUser"));
 
       var wrapper = {
-        url: 'https://sapniphp.scalingo.io/auth/svform',
-        method: vm.method,
+        url: url + "svform",
+        method: method,
         data: {
           otp: vm.dataUser.otp,
-          correo: vm.id
+          correo: vm.dataUser.identification
         }
       };
 
       $http(wrapper).
 
-      then(function (response) {
+      then(function(response) {
 
         vm.solicitud = response.data.body.solicitudes;
 
-      }, function (response) {
+      }, function(response) {
 
       });
 
-      return vm.dataUser.solicitudes;
     };
 
     /**
      * ************************************* FUNCIONES PARA ROL DE ESTUDIANTE *****************************************
      */
 
-    vm.addStudent = function (student) {
+    vm.addStudent = function(student) {
 
       vm.estudiante.cedulas.push({
         cedula: "",
@@ -112,7 +120,7 @@ angular.module('angularAppApp')
 
     };
 
-    vm.eraseStudent = function (student) {
+    vm.eraseStudent = function(student) {
 
       var index = vm.estudiante.cedulas.indexOf(student);
 
@@ -122,7 +130,7 @@ angular.module('angularAppApp')
 
     };
 
-    vm.saveStudent = function () {
+    vm.saveStudent = function() {
 
       vm.estudiante.fechaSol = date;
       vm.estudiante.hora_fecha = date + " 00:00:00.000";
@@ -141,8 +149,8 @@ angular.module('angularAppApp')
       vm.estudiante = angular.toJson(vm.estudiante);
       var wrapper = {
 
-        url: 'https://sapniphp.scalingo.io/auth/solestform',
-        method: vm.method,
+        url: url + 'solestform',
+        method: method,
         headers: {
           "Content-Type": "application/json"
         },
@@ -152,28 +160,28 @@ angular.module('angularAppApp')
 
       $http(wrapper).
 
-      then(function (response) {
+      then(function(response) {
 
         console.log(response.status);
         $state.go("formulario_enviado");
 
-      }, function (response) {
+      }, function(response) {
         console.log(response.status);
       });
     };
 
-    vm.setCatalogs = function () {
+    vm.setCatalogs = function() {
 
       vm.catalogs = {};
 
       var wrapper = {
-        url: 'https://sapniphp.scalingo.io/auth/estform',
-        method: vm.method
+        url: url + 'estform',
+        method: method
       };
 
       $http(wrapper).
 
-      then(function (response) {
+      then(function(response) {
 
         vm.catalogs = response.data.body;
         vm.catalogs.unityAcademy = vm.unityAcademy;
@@ -181,19 +189,19 @@ angular.module('angularAppApp')
         vm.catalogs.lateParticipateEvent = vm.lateParticipateEvent;
         vm.catalogs.status = response.data.status;
 
-      }, function (response) {
+      }, function(response) {
 
       });
 
     };
 
 
-    vm.validateIdentification = function (userId, form) {
+    vm.validateIdentification = function(userId, form) {
 
       var exist = null;
       var wrapper = {
-        url: 'https://sapniphp.scalingo.io/auth/validateest',
-        method: vm.method,
+        url: url + 'validateest',
+        method: method,
         data: {
           cedula: userId
         }
@@ -201,7 +209,7 @@ angular.module('angularAppApp')
 
       $http(wrapper).
 
-      then(function (response) {
+      then(function(response) {
 
         exist = response.data.status;
 
@@ -211,27 +219,78 @@ angular.module('angularAppApp')
           form.$setValidity('validIdentification', true);
         }
 
-      }, function (response) {
+      }, function(response) {
 
       });
 
     };
 
     /**
-     * ************************************* FUNCIONES PARA ROL DE PROFESOR ***************************************
+     * ************************************* FUNCIONES PARA ROLES ADMINISTRATIVOS ***************************************
      */
 
-    vm.openRequest = function (request) {
+    vm.goToApproveRequest = function(){
+      $state.go("notificacion_2");
+    };
+
+    vm.goToVerifyRequest = function(){
+      $state.go("revision_solicitud_visto_bueno");
+    };
+
+    vm.approveRequest = function() {
+
+      var dataRequest = JSON.parse(localStorage.getItem("dataRequest"));
+      var wrapper = {
+        url: url + 'passsvform',
+        method: method,
+        data: {
+          otp: vm.dataUser.otp,
+          correo: vm.dataUser.identification,
+          id_solicitud: dataRequest.id_solicitud,
+          fecha_solicitud: dataRequest.fecha_solicitud
+        }
+      };
+
+      $http(wrapper).
+
+      then(function(response) {
+
+        $state.go(vm.dataUser.estate);
+
+      }, function(response) {
+
+      });
+    };
+
+    vm.backStage = function() {
+      $state.go(vm.dataUser.estate);
+    };
+
+    vm.getInfoRequest = function() {
+      vm.dataRequest = JSON.parse(localStorage.getItem("dataRequest"));
+    };
+
+    vm.openRequest = function(request) {
 
       vm.dataRequest = request;
-      $state.go("historial_solicitud");
+      var data = JSON.parse(sessionStorage.getItem("dataUser"));
+
+      localStorage.setItem("dataRequest", angular.toJson(vm.dataRequest));
+
+
+      if (data.rol == "Secretaria") {
+        $state.go("revision_solicitud_visto_bueno");
+      }
+
+      vm.getInfoRequest();
+
     }
 
     /**
      * SETUP INITIAL STATE
      */
 
-    vm.setup = function () {
+    vm.setup = function() {
 
       vm.unityAcademy = [{
           id: '1',
@@ -277,97 +336,8 @@ angular.module('angularAppApp')
         }
       ];
 
-      vm.solicitudes = [{
-
-          id_solicitud: "26",
-          fecha_solicitud: "2018-11-24",
-          id_estudiante: "99",
-          evento: "Olimpiadas de Minecraft",
-          lugar: "En mi casa",
-          justificacion: "Yo quiero ese dinero porque sí.",
-          anexo: "-",
-          visto_bueno: "F",
-          etapa: "EN SOLICITUD",
-          hora_fecha: "2007-05-08 12:35:29",
-          id_comision: null,
-          inicio_evento: "2007-05-08 12:35:29",
-          fin_evento: "2007-05-08 12:35:29",
-          id_tipo_evento: {
-            nombre: "Deportivo"
-          },
-          id_alcance_evento: {
-            nombre: "Internacional"
-          },
-          id_apoyo_ofrecido: {
-            nombre: "Gastos de viaje"
-          },
-          id_apoyo_posible: null,
-          id_apoyo_solicitado: {
-            nombre: "Inscripción"
-          },
-          id_proyeccion_utp: {
-            nombre: "Excelente"
-          },
-          estudiantes: [{
-              nombre: "Jhoel",
-              apellido: "Ramos",
-              cedula: "8-888-8888"
-            },
-            {
-              nombre: "Jomel",
-              apellido: "McDonald",
-              cedula: "7-777-7777"
-            }
-          ]
-        },
-        {
-
-          id_solicitud: "26",
-          fecha_solicitud: "2018-11-24",
-          id_estudiante: "99",
-          evento: "Olimpiadas de Minecraft",
-          lugar: "En mi casa",
-          justificacion: "Yo quiero ese dinero porque sí.",
-          anexo: "-",
-          visto_bueno: "F",
-          etapa: "EN SOLICITUD",
-          hora_fecha: "2007-05-08 12:35:29",
-          id_comision: null,
-          inicio_evento: "2007-05-08 12:35:29",
-          fin_evento: "2007-05-08 12:35:29",
-          id_tipo_evento: {
-            nombre: "Deportivo"
-          },
-          id_alcance_evento: {
-            nombre: "Internacional"
-          },
-          id_apoyo_ofrecido: {
-            nombre: "Gastos de viaje"
-          },
-          id_apoyo_posible: null,
-          id_apoyo_solicitado: {
-            nombre: "Inscripción"
-          },
-          id_proyeccion_utp: {
-            nombre: "Excelente"
-          },
-          estudiantes: [{
-              nombre: "Jhoel",
-              apellido: "Ramos",
-              cedula: "8-888-8888"
-            },
-            {
-              nombre: "Jomel",
-              apellido: "McDonald",
-              cedula: "7-777-7777"
-            }
-          ]
-        }
-      ];
-
-      if (angular.isDefined(vm.dataUser)) {
-        vm.getDataRequest();
-      }
+      vm.getDataRequest();
+      vm.getInfoRequest();
 
       if ($state.current.name == "solicitud_apoyo_economico") {
         vm.setCatalogs();

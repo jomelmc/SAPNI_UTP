@@ -39,22 +39,19 @@ angular
         url: '/bandeja_trabajo',
         templateUrl: 'views/bandejaTrabajo.html',
         controller: 'MainCtrl',
-        controllerAs: 'ctrl',
-        params: {solicitudes: null}
+        controllerAs: 'ctrl'
       })
       .state('seguimiento', {
         url: '/seguimiento',
         templateUrl: 'views/seguimiento.html',
         controller: 'MainCtrl',
-        controllerAs: 'ctrl',
-        params: {solicitudes: null}
+        controllerAs: 'ctrl'
       })
       .state('dar_visto_bueno', {
         url: '/dar_visto_bueno',
         templateUrl: 'views/darVistoBueno.html',
         controller: 'MainCtrl',
-        controllerAs: 'ctrl',
-        params: {solicitudes: null}
+        controllerAs: 'ctrl'
       })
       .state('revision_solicitud_visto_bueno', {
         url: '/revision_solicitud_visto_bueno',
@@ -96,8 +93,7 @@ angular
         url: '/historial_solicitud',
         templateUrl:  'views/historialSolicitud.html',
         controller:   'MainCtrl',
-        controllerAs: 'ctrl',
-        params: {solicitudes: null}
+        controllerAs: 'ctrl'
       })
       .state('generar_solicitud',{
         url: '/generar_solicitud',
@@ -108,6 +104,12 @@ angular
       .state('formulario_enviado',{
         url: '/formulario_enviado',
         templateUrl:  'views/notificacion1.html',
+        controller:   'MainCtrl',
+        controllerAs: 'ctrl'
+      })
+      .state('notificacion_2',{
+        url: '/notificacion_2',
+        templateUrl:  'views/notificacion2.html',
         controller:   'MainCtrl',
         controllerAs: 'ctrl'
       })
