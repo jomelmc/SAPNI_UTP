@@ -2,43 +2,41 @@
 
   <div class="col-md-12">
 
-    <div class="border">
+    <div class="text-center">
+      <form>
+        <div class="col-md-6 text-center border-round">
+          <div class="form-group pt-3">
+            <img src="../images/logo_utp.png" class="logo-login">
+          </div>
 
-      <div class="col-md-12 text-center">
+          <div class="form-group pt-3">
+            <h1 class="txt-subtitle">SAPNI</h1>
+          </div>
 
-        <h1 class="text-uppercase text-center">Inicio de Sesión</h1>
+          <div class="form-group pt-3">
+            <input type="text" ng-model="ctrl.user.id"
+            ng-required="true"
+            class="form-control txt-input col-md-6 col-center"  
+            placeholder="usuario">
+          </div>
 
-        <form class="form-horizontal">
-          <fieldset>
+          <div class="form-group pt-2">
+            <input type="password" ng-model="ctrl.user.password"
+            ng-required="true"
+            class="form-control txt-input col-md-6 col-center" 
+            placeholder="contraseña">
+          </div>
+<!-- alerta de error datos no encontrados-->
+          <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times mr-2"></i>Datos erróneos. Por favor, inténtelo otra vez.
+          </div>
 
-            <!-- Text input-->
-            <div class="form-group center-block">
-              <label class="col-md-4 control-label" for="textinput">Usuario</label>
-              <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-
-            <!-- Password input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="passwordinput">Contraseña</label>
-              <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="singlebutton"></label>
-              <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Login</button>
-              </div>
-            </div>
-
-          </fieldset>
-
-      </div>
+          <div class="pt-3">
+            <button type="submit" ng-click="ctrl.loginOnSubmit()"
+            class="btn btn-primary btn-send">Ingresar</button>
+          </div>
+        </div>
+      </form>
     </div>
 
   </div>

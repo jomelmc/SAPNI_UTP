@@ -5,7 +5,7 @@
 /* .divTitle: para todos los titulos de encabezado que hay en las páginas       */
 /* .plusStudent: para agregar más estudiantes                                   */
 /* .btn-sendboton submit para el envio de datos                                 */
-/* .txtSubTitle: palabras que necesitan bold                                    */
+/* .txt-subtitle: palabras que necesitan bold                                   */
 /* .txtInput: input tipo text la forma ovalada                                  */
 /* .select: se encarga de poner la imagen arrow-down en la etiqueta select      */
 /* .texTarea: cambiar tamaño al input.                                          */
@@ -14,59 +14,93 @@
 /*  botones de envio                                                            */
 /* .history: div historial.                                                     */
 /* .Text: margin al texto para separar del borde.                               */
-/* .login: inicio de sesion                                                     */
-/* .bordeRound: el que tiene lo rededondo de tu maldito borde                   */
+/* .border-round: el que tiene lo rededondoen el borde                          */
+/* .logo-login: logo del login principal de la pagina                           */
+/* .logo_2: contiene el logo que va en el encabezado                            */
+/* .div-nav: contenedor del contenido de navegación de bandeja                  */
+/* .solc: estados de las solicitudes: solicitado, en evaluacion ect.            */
+/* .fondo: cambio del color grind-div                                           */
+/* .h:secciones del historial                                                   */
+/* .history-drown:muestra las secciones del historial                           */
+/* .mright: configura el margin-right de un div                                 */
+/* .lis-solc: rescribe el list-group                                            */
+/* .lis-solc-item: rescribe los item del list-group                             */
+/* .box-lista: edita el tamaño de la lista                                      */
+/* .input-number; edita el type number para cambiar sus bordes y color          */
+/* .fecha: campo donde se colocara la fecha del sistema                         */
 
 
 
-body{
+.body-principal-sapni{
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     color: #000000;
+    margin: 0;
+    padding: 0;
 }
 
-.login{
-  width: 60%;
-  text-align: center;
-  margin-left: 20%;
-     
+.link-text{
+  color: #972C88;
+  text-decoration: underline #972C88;
+}
+
+.font-normal{
+  font-weight: normal;
+}
+
+.col-center{
+  float: none;
+  margin: 0 auto;
+}
+
+.col-full{
+  margin: 800px;
 }
 
 .grid-div{ 
-  background:#F6F6F6;
-  border: 2px solid #681A5D;
- 
+  background:#F8F4F7;
+  border: 1px solid #681A5D;
 }
 
-.bordeRound{
-  border-radius: 1em;
-  width: 70%;
+.border-round{
+  background:#F9F9F9;
+  border-radius: 3em;
+  margin: 20px;
+  margin-left: 25%;
+  padding: 60px;
 }
 
-.divNav{
+.div-nav{
   background:#F6F6F6;
   border: 1px solid #444444;
 }
 
-.divTitle{
+.div-title{
   background: #972C88;
   color: #FFFFFF;
+  font-size: 1.3rem;
+  padding: 3px 3px 3px 20px;
 }
 
-.plusStudent{
-    color: #972C88;
-}
-
-.txtSubTitle{
+.txt-subtitle{
    font-weight: bold;
 }
 
-.txtInput{
+.txt-input{
   display: block;
   width: 100%;
-  height: 30px;
-  border: 2px solid #902982;
+  height: 40px;
+  border: 1px solid #902982;
   border-radius: 3rem;
   padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
+
+.txt-input-small{
+  display: block;
+  width: 100%;
+  height: 25px;
+  border: 1px solid #902982;
+  border-radius: 3rem;
   font-size: 1rem;
 }
 
@@ -77,21 +111,29 @@ body{
   -moz-appearance: none;
 }
 
-.texTarea{
+.txt-area{
   background: #FFFFFF;
-  border: 2px solid #902982;
+  border: 1px solid #902982;
   border-radius: 0.25rem;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
 }
 
 
-.txtInput:focus, .texTarea:focus {
+.txt-input:focus, .tex-tarea:focus {
   color: #495057;
   background-color: #fff;
   border-color: #681A5D;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(67, 15, 60, 0.25);
+}
+
+.btn-next {
+  color: #fff;
+  background-color:  #CA44B8;
+  border-color:  #CA44B8;
+  font-weight: bold;
+  margin-bottom: 10px; 
 }
 
 .btn-send {
@@ -132,11 +174,8 @@ body{
 
 .search{
   margin-top: 30px;
-  margin-left: 30px;
   margin-bottom: 30px;
-  border: 2px solid rgb(197, 135, 189);
-  background: #F6F6F6 url("img/search.svg") no-repeat right 2rem center;
-  background-size: 20px 20px; 
+  border: 1px solid rgb(197, 135, 189);
 }
 
 
@@ -145,8 +184,23 @@ body{
 }
 
 .history{
-   border: 2px solid #681A5D;
-   margin: 20px;
+  width: 80%;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-left: 60px; 
+   border: 1px solid #681A5D;
+}
+
+.history-drown{
+  width: 100%;
+  border-top: 1px solid #681A5D
+}
+
+.h{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 3em;
+  border: 1px solid #495057;
 }
 
 .Text{
@@ -154,4 +208,99 @@ body{
   margin-left: 20px;
   font-weight: bold;
   font-size: 20px;
+}
+
+/*IMAGEN LOGO LOGIN*/
+.logo-login{
+  width: 35%;
+  background: #FFFFFF;
+  border-radius: 7em;
+}
+
+/*IMAGEN LOGO ENCABEZADO*/
+.logo_2{
+  width: 45px;
+  background: #FFFFFF;
+  margin-top: -10px;
+  border-radius: 7em;
+}
+
+.divNav{
+  background: #F6F6F6;
+  border: 1px solid #444444;
+}
+
+.fa-search{
+  float: right;
+  margin-top: -55px;
+  margin-right: 30px;
+  opacity: 0.5;
+}
+
+.solc{
+  float: right;
+  margin-top: -10px;
+}
+
+.btn-mt{
+  width: 20%;
+  margin-left: 75%;
+  margin-top: -8%;
+  
+}
+
+.fondo{
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+.div-1{
+  width: 40%;
+}
+.div-2{
+width: 20%;
+ margin-top: -90px;
+}
+
+.mright{
+ width: 400px;
+ margin-left: 70%;
+}
+
+.lis-solc{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  border: 1px solid #902982;
+  margin-top: -90px;
+}
+
+.list-solc-item{
+  position: relative;
+  display: block;
+  padding: 0;
+  margin-top: 5px;
+  border-radius: 0px;
+  border: 0px;
+}
+
+
+.box-lista{
+  width: 60%;
+}
+
+.input-number{
+ background-color: #FFFFFF;
+ border: 1px solid #681A5D;
+}
+
+.fecha{
+  width: 80px;
+  background: transparent;
+  border: transparent;
+  color: #FFFFFF;
+  font-size: 14px;
+
 }
