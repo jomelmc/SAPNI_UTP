@@ -1,0 +1,28 @@
+<!--AUTORIZACION DEL PROCESO 
+SE MUESTRA EN PANTALLA 15, 22, 25, 33
+-->
+<div class="container-body">
+
+  <div class="col-md-12">
+    <div class="form-group">
+      <div class="col-md-6  border-round">
+        <div class="">
+          <h3 class="txt-subtitle text-uppercase">Autorización del Proceso</h3>
+        </div>
+        <div>
+          Enviamos a su correo institucional la firma digital para validar el proceso, ingresa el código aquí:
+          <br><br>
+          <input class="ml-2 col-sm-5 txt-input-small mr-5 mb-3" type="text" name="token" ng-required="true">
+        </div>
+        <!--NOTIFICACION CUANDO NO INGRESA EL TOKEN O TOKEN INVALIDO-->
+        <div class="alert alert-danger" role="alert" ng-submit>
+          <i class="fa fa-user ml-2 "></i> Usuario código incorrecto
+        </div>
+        <div>
+          <button type="submit" class="btn btn-send text-uppercase col-sm-3  ml-2">firmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
