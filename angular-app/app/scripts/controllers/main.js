@@ -8,7 +8,7 @@
  * Controller of the angularAppApp
  */
 angular.module('angularAppApp')
-  .controller('MainCtrl', function($state, $http) {
+  .controller('MainCtrl', function ($state, $http) {
 
     /** SE DECLARA EL ÁMBITO GLOBAL */
     var vm = this;
@@ -32,7 +32,7 @@ angular.module('angularAppApp')
      * ************************************ LOGIN DEL SISTEMA ********************************************************
      */
 
-    vm.loginOnSubmit = function() {
+    vm.loginOnSubmit = function () {
 
       vm.status = null;
       var wrapper = {
@@ -46,20 +46,20 @@ angular.module('angularAppApp')
 
       $http(wrapper).
 
-      then(function(response) {
+      then(function (response) {
 
         vm.dataUser = response.data.body;
         vm.status = response.data.status;
 
-        if(angular.isUndefined(vm.dataUser.rol)){
+        if (angular.isUndefined(vm.dataUser.rol) && vm.status.code == 'U0000') {
 
           vm.setCatalogs();
-          $state.go("solicitud_apoyo_economico");
+          $state.go(vm.dataUser.estado);
 
-        } else{
+        } else if (vm.status.code == 'U0000') {
 
           vm.getDataRequest();
-          
+
         }
 
         // switch (vm.dataUser.rol) {
@@ -89,38 +89,42 @@ angular.module('angularAppApp')
         //     $state.go("login");
         // }
 
-      }, function(response) {
+      }, function (response) {
         vm.status = response.data.status;
       });
 
     };
 
-    vm.getDataRequest = function() {
+    vm.getDataRequest = function () {
 
-      // var wrapper = {
-      //   url: 'https://sapniphp.scalingo.io/auth/svform',
-      //   method: vm.method,
-      //   data: {
-      //     otp: "",
-      //     correo: ""
-      //   }
-      // };
+      var wrapper = {
+        url: 'https://sapniphp.scalingo.io/auth/svform',
+        method: vm.method,
+        data: {
+          otp: vm.dataUser.otp,
+          correo: vm.id
+        }
+      };
 
-      // $http(wrapper).
+      $http(wrapper).
 
-      // then(function(response) {
+      then(function (response) {
 
-      // }, function(response) {
+        vm.dataUser.solicitudes = response.data.body.solicitudes;
+        $state.go(vm.dataUser.estado);
 
-      // });
-      
+      }, function (response) {
+
+      });
+
+
     };
 
     /**
      * ************************************* FUNCIONES PARA ROL DE ESTUDIANTE *****************************************
      */
 
-    vm.addStudent = function(student) {
+    vm.addStudent = function (student) {
 
       vm.estudiante.cedulas.push({
         cedula: "",
@@ -136,7 +140,7 @@ angular.module('angularAppApp')
 
     };
 
-    vm.eraseStudent = function(student) {
+    vm.eraseStudent = function (student) {
 
       var index = vm.estudiante.cedulas.indexOf(student);
 
@@ -146,7 +150,7 @@ angular.module('angularAppApp')
 
     };
 
-    vm.saveStudent = function() {
+    vm.saveStudent = function () {
 
       vm.estudiante.fechaSol = date;
       vm.estudiante.hora_fecha = date + " 00:00:00.000";
@@ -162,36 +166,42 @@ angular.module('angularAppApp')
       vm.estudiante.fin_evento = vm.estudiante.fin_evento.split("/").join("-");
 
       vm.estudiante.anexo = "-";
-
+      vm.estudiante = angular.toJson(vm.estudiante);
       var wrapper = {
 
         url: 'https://sapniphp.scalingo.io/auth/solestform',
-        method: 'POST',
+        method: vm.method,
+        headers: {
+          "Content-Type": "application/json"
+        },
         data: vm.estudiante
 
       };
 
       $http(wrapper).
 
-      then(function(response) {
-        console.log(response.data.status);
-      }, function(response) {
+      then(function (response) {
+
+        console.log(response.status);
+        $state.go("formulario_enviado");
+
+      }, function (response) {
         console.log(response.status);
       });
     };
 
-    vm.setCatalogs = function() {
+    vm.setCatalogs = function () {
 
       vm.catalogs = {};
 
       var wrapper = {
         url: 'https://sapniphp.scalingo.io/auth/estform',
-        method: 'POST'
+        method: vm.method
       };
 
       $http(wrapper).
 
-      then(function(response) {
+      then(function (response) {
 
         vm.catalogs = response.data.body;
         vm.catalogs.unityAcademy = vm.unityAcademy;
@@ -199,14 +209,14 @@ angular.module('angularAppApp')
         vm.catalogs.lateParticipateEvent = vm.lateParticipateEvent;
         vm.catalogs.status = response.data.status;
 
-      }, function(response) {
+      }, function (response) {
 
       });
 
     };
 
 
-    vm.validateIdentification = function(userId, form) {
+    vm.validateIdentification = function (userId, form) {
 
       var exist = null;
       var wrapper = {
@@ -219,7 +229,7 @@ angular.module('angularAppApp')
 
       $http(wrapper).
 
-      then(function(response) {
+      then(function (response) {
 
         exist = response.data.status;
 
@@ -229,7 +239,7 @@ angular.module('angularAppApp')
           form.$setValidity('validIdentification', true);
         }
 
-      }, function(response) {
+      }, function (response) {
 
       });
 
@@ -239,9 +249,7 @@ angular.module('angularAppApp')
      * ************************************* FUNCIONES PARA ROL DE PROFESOR ***************************************
      */
 
-
-
-    vm.setup = function() {
+    vm.setup = function () {
 
       vm.unityAcademy = [{
           id: '1',
@@ -287,7 +295,100 @@ angular.module('angularAppApp')
         }
       ];
 
+      vm.solicitudes = [{
+
+          id_solicitud: "26",
+          fecha_solicitud: "2018-11-24",
+          id_estudiante: "99",
+          evento: "Olimpiadas de Minecraft",
+          lugar: "En mi casa",
+          justificacion: "Yo quiero ese dinero porque sí.",
+          anexo: "-",
+          visto_bueno: "F",
+          etapa: "EN SOLICITUD",
+          hora_fecha: "2007-05-08 12:35:29",
+          id_comision: null,
+          inicio_evento: "2007-05-08 12:35:29",
+          fin_evento: "2007-05-08 12:35:29",
+          id_tipo_evento: {
+            nombre: "Deportivo"
+          },
+          id_alcance_evento: {
+            nombre: "Internacional"
+          },
+          id_apoyo_ofrecido: {
+            nombre: "Gastos de viaje"
+          },
+          id_apoyo_posible: null,
+          id_apoyo_solicitado: {
+            nombre: "Inscripción"
+          },
+          id_proyeccion_utp: {
+            nombre: "Excelente"
+          },
+          estudiantes: [{
+              nombre: "Jhoel",
+              apellido: "Ramos",
+              cedula: "8-888-8888"
+            },
+            {
+              nombre: "Jomel",
+              apellido: "McDonald",
+              cedula: "7-777-7777"
+            }
+          ]
+        },
+        {
+
+          id_solicitud: "26",
+          fecha_solicitud: "2018-11-24",
+          id_estudiante: "99",
+          evento: "Olimpiadas de Minecraft",
+          lugar: "En mi casa",
+          justificacion: "Yo quiero ese dinero porque sí.",
+          anexo: "-",
+          visto_bueno: "F",
+          etapa: "EN SOLICITUD",
+          hora_fecha: "2007-05-08 12:35:29",
+          id_comision: null,
+          inicio_evento: "2007-05-08 12:35:29",
+          fin_evento: "2007-05-08 12:35:29",
+          id_tipo_evento: {
+            nombre: "Deportivo"
+          },
+          id_alcance_evento: {
+            nombre: "Internacional"
+          },
+          id_apoyo_ofrecido: {
+            nombre: "Gastos de viaje"
+          },
+          id_apoyo_posible: null,
+          id_apoyo_solicitado: {
+            nombre: "Inscripción"
+          },
+          id_proyeccion_utp: {
+            nombre: "Excelente"
+          },
+          estudiantes: [{
+              nombre: "Jhoel",
+              apellido: "Ramos",
+              cedula: "8-888-8888"
+            },
+            {
+              nombre: "Jomel",
+              apellido: "McDonald",
+              cedula: "7-777-7777"
+            }
+          ]
+        }
+      ];
+
+      if ($state.current.name == "solicitud_apoyo_economico") {
+        vm.setCatalogs();
+      }
+
     };
 
     vm.setup();
+    console.log(vm.solicitudes);
   });

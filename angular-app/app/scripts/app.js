@@ -69,43 +69,43 @@ angular
         url: '/solicitud_visto_bueno',
         templateUrl:  'views/solicitudVistoBueno.html',
         controller:   'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
       .state('asignacion_de_resultado_lista',{
         url: '/solicitud_visto_bueno',
         templateUrl:  'views/asignacionResultadoLista.html',
         controller:   'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
       .state('asignar_resultado',{
         url: '/asignar_resultado',
         templateUrl:  'views/asignarResultado.html',
         controller:   'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
       .state('solicitudes_asignadas',{
         url: '/solicitudes_asignadas',
         templateUrl:  'views/solicitudesAsignadas.html',
         controller:   'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
       .state('historial_solicitud',{
         url: '/historial_solicitud',
         templateUrl:  'views/historialSolicitud.html',
         controller:   'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
       .state('generar_solicitud',{
         url: '/generar_solicitud',
         templateUrl:  'views/recomendacion.html',
         controller:   'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
-      .state('prueba_notificaciones',{
-        url: '/prueba_notificaciones',
-        templateUrl:  'views/notificacion5.html',
+      .state('formulario_enviado',{
+        url: '/formulario_enviado',
+        templateUrl:  'views/notificacion1.html',
         controller:   'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'ctrl'
       })
       
       
@@ -118,7 +118,8 @@ angular
       scope:{
         data: '='
       },
-      link: function(){
+      link: function(scope, element, attrs){
       }
     };
   }]);
+

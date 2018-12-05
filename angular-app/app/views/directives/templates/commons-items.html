@@ -1,7 +1,13 @@
-<div class="list-group-item">
-  <div class="txt-subtitle text-uppercase">{{data.participant.name}}</div>
-  <div class="solc text-uppercase">
-    {{data.participant.state}}
+<div class="list-group m-2" ng-repeat="solicitud in data">
+  <div class="list-group-item">
+    <div class="ml-1 row">
+      <div class="txt-subtitle text-uppercase" ng-repeat="estudiante in solicitud.estudiantes">{{estudiante.nombre}}<span
+          ng-if="!$last">,&nbsp;</span></div>
+    </div>
+    <div class="solc text-uppercase">
+      {{solicitud.etapa}}
+    </div>
+    <div>{{solicitud.evento}}</div>
   </div>
-  <div>{{data.participant.event}}</div>
+</div>
 </div>
