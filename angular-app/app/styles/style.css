@@ -41,6 +41,13 @@
 .link-text{
   color: #972C88;
   text-decoration: underline #972C88;
+  
+}
+
+.link-text:hover{
+  cursor: pointer;
+  color: #681A5D;
+  font-size: 18px;
 }
 
 .font-normal{
