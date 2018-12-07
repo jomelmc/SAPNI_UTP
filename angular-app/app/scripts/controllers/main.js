@@ -21,9 +21,10 @@ angular.module('angularAppApp')
     var date = actualDate.getFullYear() + "-" + (actualDate.getMonth() + 1) + "-" + actualDate.getDate();
 
     vm.date = moment(date).format('DD/MM/YYYY');
+    vm.dataUser = JSON.parse(sessionStorage.getItem("dataUser"));
     vm.estudiante = {
       cedulas: [{
-        cedula: "",
+        cedula: vm.dataUser.identification,
         ultima_participacion: ""
       }]
     };
@@ -36,41 +37,62 @@ angular.module('angularAppApp')
 
     vm.loginOnSubmit = function() {
 
-      vm.status = null;
-      var wrapper = {
-        url: url + 'validateuser',
-        method: method,
-        data: {
-          user: vm.id,
-          pass: vm.password
-        }
-      };
+      // vm.status = null;
+      // var wrapper = {
+      //   url: url + 'validateuser',
+      //   method: method,
+      //   data: {
+      //     user: vm.id,
+      //     pass: vm.password
+      //   }
+      // };
 
-      $http(wrapper).
+      // $http(wrapper).
 
-      then(function(response) {
+      // then(function(response) {
 
-        vm.dataUser = response.data.body;
-        vm.dataUser.identification = vm.id;
+      //   vm.dataUser = response.data.body;
 
-        sessionStorage.setItem("dataUser", angular.toJson(vm.dataUser));
-        vm.status = response.data.status;
+      if (vm.id == "8-888-8888") {
 
-        if (angular.isUndefined(vm.dataUser.rol) && vm.status.code == 'U0000') {
+        vm.dataUser = {
+          rol: "Estudiante",
+          nombre: "Jhoel",
+          apellido: "Ramos",
+          correo: "jhoel.ramos@utp.ac.pa",
+          identification: vm.id
 
-          vm.setCatalogs();
-          $state.go(vm.dataUser.estate);
+        };
 
-        } else if (vm.status.code == 'U0000') {
+      } else if (vm.id == "mayka@utp.ac.pa") {
 
-          $state.go(vm.dataUser.estate);
-          vm.getDataRequest();
+        vm.dataUser = {
+          rol: "Secretaria",
+          nombre: "Maika",
+          apellido: "Ramos",
+          identification: "mayka@utp.ac.pa"
+        };
 
-        }
+      }
 
-      }, function(response) {
-        vm.status = response.data.status;
-      });
+      sessionStorage.setItem("dataUser", angular.toJson(vm.dataUser));
+      //vm.status = response.data.status;
+
+      if (vm.dataUser.rol == "Estudiante") {
+
+        vm.setCatalogs();
+        $state.go("solicitud_apoyo_economico");
+
+      } else if (vm.dataUser.rol == "Secretaria") {
+
+        $state.go("bandeja_trabajo");
+        vm.getDataRequest();
+
+      }
+
+      // }, function(response) {
+      //   vm.status = response.data.status;
+      // });
 
     };
 
@@ -83,7 +105,6 @@ angular.module('angularAppApp')
         url: url + "svform",
         method: method,
         data: {
-          otp: vm.dataUser.otp,
           correo: vm.dataUser.identification
         }
       };
@@ -189,16 +210,97 @@ angular.module('angularAppApp')
       $http(wrapper).
 
       then(function(response) {
+          // var response = {
+          //   data: {
+          //     body: {
+          //       tipoEvento: [
+          //         {
+          //           id: "1",
+          //           nombre: "Cultural"
+          //       },
+          //         {
+          //           id: "2",
+          //           nombre: "Deportivo"
+          //       }
+          //   ],
+          //       alcanceEvento: [
+          //         {
+          //           id: "1",
+          //           nombre: "Nacional"
+          //       },
+          //         {
+          //           id: "2",
+          //           nombre: "Internacional"
+          //       }
+          //   ],
+          //       "proyeccionUtp": [
+          //         {
+          //           id: "1",
+          //           nombre: "Excelente"
+          //       },
+          //         {
+          //           id: "2",
+          //           nombre: "Buena"
+          //       },
+          //         {
+          //           id: "3",
+          //           nombre: "No tiene"
+          //       }
+          //   ],
+          //       "apoyoSolicitado": [
+          //         {
+          //           id: "1",
+          //           nombre: "Inscripción"
+          //       },
+          //         {
+          //           id: "2",
+          //           nombre: "Gastos de viaje"
+          //       },
+          //         {
+          //           id: "3",
+          //           nombre: "Apoyo económico parcial"
+          //       }
+          //   ],
+          //       "apoyoPatrocinador": [
+          //         {
+          //           id: "1",
+          //           nombre: "Inscripción"
+          //       },
+          //         {
+          //           id: "2",
+          //           nombre: "Gastos de viaje"
+          //       },
+          //         {
+          //           id: "3",
+          //           nombre: "Manutención"
+          //       },
+          //         {
+          //           id: "4",
+          //           nombre: "Hospedaje"
+          //       },
+          //         {
+          //           id: "5",
+          //           nombre: "Apoyo económico parcial"
+          //       }
+          //   ]
+          //     },
+          //     status: {
+          //       code: "U0000",
+          //       codeDesc: "Se ha ejecutado con exito"
+          //     }
+          //   }
+          // };
 
-        vm.catalogs = response.data.body;
-        vm.catalogs.unityAcademy = vm.unityAcademy;
+          vm.catalogs = response.data.body;
+          vm.catalogs.unityAcademy = vm.unityAcademy;
 
-        vm.catalogs.lateParticipateEvent = vm.lateParticipateEvent;
-        vm.catalogs.status = response.data.status;
+          vm.catalogs.lateParticipateEvent = vm.lateParticipateEvent;
+          vm.catalogs.status = response.data.status;
 
-      }, function(response) {
+        },
+        function(response) {
 
-      });
+        });
 
     };
 
@@ -378,7 +480,7 @@ angular.module('angularAppApp')
         }
       ];
 
-      if ($state.current.name != "login") {
+      if ($state.current.name == "bandeja_trabajo") {
         vm.getDataRequest();
         vm.getInfoRequest();
         vm.listTeachers();
